@@ -1,0 +1,333 @@
+Script started on 2026-02-25 22:01:27+01:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="92" LINES="65"]
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\nuXmv -int Order_Process_6Events_15Terms.smv 
+[?2004l]133;C\]666;vte.shell.preexec!\*** This is nuXmv 2.1.0 (compiled on Fri Nov 29 13:41:31 2024)
+*** Copyright (c) 2014-2024, Fondazione Bruno Kessler
+*** For more information on nuXmv see https://nuxmv.fbk.eu
+*** or email to <nuxmv@fbk.eu>.
+*** Please report bugs at Please report bugs to <nusmv-users@fbk.eu>
+*** (click on "Login Anonymously" to access)
+*** Alternatively write to <nuxmv@fbk.eu>.
+
+*** This version of nuXmv is linked to NuSMV 2.7.0.
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@fbk.eu>.
+*** Copyright (C) 2010-2024, Fondazione Bruno Kessler
+
+*** This version of nuXmv is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of nuXmv is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+*** This version of nuXmv is linked to MathSAT
+*** Copyright (C) 2009-2019 by Fondazione Bruno Kessler
+*** Copyright (C) 2009-2019 by University of Trento and others
+*** See http://mathsat.fbk.eu
+
+nuXmv > read[13G_m[15Godel 
+nuXmv > fla[12Gtten_hierarchy 
+nuXmv > enco[13Gde_variables 
+nuXmv > bu[11Gild_m[16Godel 
+nuXmv > che[12Gck_c[16Gt[17Glspec 
+-- specification AG (((((((Order_Product_included & Order_Product_pending) | (Receive_Shipment_included & Receive_Shipment_pending)) | (Approve_Order_included & Approve_Order_pending)) | (Receive_Payment_included & Receive_Payment_pending)) | (Pay_for_Order_included & Pay_for_Order_pending)) | (Ship_Order_included & Ship_Order_pending)) -> (((((Order_Product_enabled | Receive_Shipment_enabled) | Approve_Order_enabled) | Receive_Payment_enabled) | Pay_for_Order_enabled) | Ship_Order_enabled))  is false
+-- as demonstrated by the following execution sequence
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 1.1 <-
+    Order_Product_happened = FALSE
+    Order_Product_included = TRUE
+    Order_Product_pending = FALSE
+    Receive_Shipment_happened = FALSE
+    Receive_Shipment_included = FALSE
+    Receive_Shipment_pending = FALSE
+    Approve_Order_happened = FALSE
+    Approve_Order_included = TRUE
+    Approve_Order_pending = FALSE
+    Receive_Payment_happened = FALSE
+    Receive_Payment_included = FALSE
+    Receive_Payment_pending = FALSE
+    Pay_for_Order_happened = FALSE
+    Pay_for_Order_included = FALSE
+    Pay_for_Order_pending = FALSE
+    Ship_Order_happened = FALSE
+    Ship_Order_included = FALSE
+    Ship_Order_pending = FALSE
+    Ship_Order_accepted = TRUE
+    Pay_for_Order_accepted = TRUE
+    Receive_Payment_accepted = TRUE
+    Approve_Order_accepted = TRUE
+    Receive_Shipment_accepted = TRUE
+    Order_Product_accepted = TRUE
+    no_enabled = FALSE
+    Ship_Order_enabled = FALSE
+    Pay_for_Order_enabled = FALSE
+    Receive_Payment_enabled = FALSE
+    Approve_Order_enabled = FALSE
+    Receive_Shipment_enabled = FALSE
+    Order_Product_enabled = TRUE
+    no_effect = FALSE
+    Ship_Order_effect = FALSE
+    Pay_for_Order_effect = FALSE
+    Receive_Payment_effect = FALSE
+    Approve_Order_effect = FALSE
+    Receive_Shipment_effect = FALSE
+    Order_Product_effect = TRUE
+  -> State: 1.2 <-
+    Order_Product_happened = TRUE
+    Order_Product_included = FALSE
+    Approve_Order_enabled = TRUE
+    Order_Product_enabled = FALSE
+    Approve_Order_effect = TRUE
+    Order_Product_effect = FALSE
+  -> State: 1.3 <-
+    Approve_Order_happened = TRUE
+    Approve_Order_included = FALSE
+    Pay_for_Order_included = TRUE
+    Pay_for_Order_pending = TRUE
+    Ship_Order_included = TRUE
+    Ship_Order_pending = TRUE
+    Ship_Order_accepted = FALSE
+    Pay_for_Order_accepted = FALSE
+    no_enabled = TRUE
+    Approve_Order_enabled = FALSE
+-- specification (((((EF Order_Product_enabled & EF Receive_Shipment_enabled) & EF Approve_Order_enabled) & EF Receive_Payment_enabled) & EF Pay_for_Order_enabled) & EF Ship_Order_enabled)  is false
+-- as demonstrated by the following execution sequence
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 2.1 <-
+    Order_Product_happened = FALSE
+    Order_Product_included = TRUE
+    Order_Product_pending = FALSE
+    Receive_Shipment_happened = FALSE
+    Receive_Shipment_included = FALSE
+    Receive_Shipment_pending = FALSE
+    Approve_Order_happened = FALSE
+    Approve_Order_included = TRUE
+    Approve_Order_pending = FALSE
+    Receive_Payment_happened = FALSE
+    Receive_Payment_included = FALSE
+    Receive_Payment_pending = FALSE
+    Pay_for_Order_happened = FALSE
+    Pay_for_Order_included = FALSE
+    Pay_for_Order_pending = FALSE
+    Ship_Order_happened = FALSE
+    Ship_Order_included = FALSE
+    Ship_Order_pending = FALSE
+    Ship_Order_accepted = TRUE
+    Pay_for_Order_accepted = TRUE
+    Receive_Payment_accepted = TRUE
+    Approve_Order_accepted = TRUE
+    Receive_Shipment_accepted = TRUE
+    Order_Product_accepted = TRUE
+    no_enabled = FALSE
+    Ship_Order_enabled = FALSE
+    Pay_for_Order_enabled = FALSE
+    Receive_Payment_enabled = FALSE
+    Approve_Order_enabled = FALSE
+    Receive_Shipment_enabled = FALSE
+    Order_Product_enabled = TRUE
+-- specification AG (((((((Order_Product_included & Order_Product_pending) -> EF Order_Product_accepted) & ((Receive_Shipment_included & Receive_Shipment_pending) -> EF Receive_Shipment_accepted)) & ((Approve_Order_included & Approve_Order_pending) -> EF Approve_Order_accepted)) & ((Receive_Payment_included & Receive_Payment_pending) -> EF Receive_Payment_accepted)) & ((Pay_for_Order_included & Pay_for_Order_pending) -> EF Pay_for_Order_accepted)) & ((Ship_Order_included & Ship_Order_pending) -> EF Ship_Order_accepted))  is false
+-- as demonstrated by the following execution sequence
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 3.1 <-
+    Order_Product_happened = FALSE
+    Order_Product_included = TRUE
+    Order_Product_pending = FALSE
+    Receive_Shipment_happened = FALSE
+    Receive_Shipment_included = FALSE
+    Receive_Shipment_pending = FALSE
+    Approve_Order_happened = FALSE
+    Approve_Order_included = TRUE
+    Approve_Order_pending = FALSE
+    Receive_Payment_happened = FALSE
+    Receive_Payment_included = FALSE
+    Receive_Payment_pending = FALSE
+    Pay_for_Order_happened = FALSE
+    Pay_for_Order_included = FALSE
+    Pay_for_Order_pending = FALSE
+    Ship_Order_happened = FALSE
+    Ship_Order_included = FALSE
+    Ship_Order_pending = FALSE
+    Ship_Order_accepted = TRUE
+    Pay_for_Order_accepted = TRUE
+    Receive_Payment_accepted = TRUE
+    Approve_Order_accepted = TRUE
+    Receive_Shipment_accepted = TRUE
+    Order_Product_accepted = TRUE
+    no_enabled = FALSE
+    Ship_Order_enabled = FALSE
+    Pay_for_Order_enabled = FALSE
+    Receive_Payment_enabled = FALSE
+    Approve_Order_enabled = FALSE
+    Receive_Shipment_enabled = FALSE
+    Order_Product_enabled = TRUE
+    no_effect = FALSE
+    Ship_Order_effect = FALSE
+    Pay_for_Order_effect = FALSE
+    Receive_Payment_effect = FALSE
+    Approve_Order_effect = FALSE
+    Receive_Shipment_effect = FALSE
+    Order_Product_effect = TRUE
+  -> State: 3.2 <-
+    Order_Product_happened = TRUE
+    Order_Product_included = FALSE
+    Approve_Order_enabled = TRUE
+    Order_Product_enabled = FALSE
+    Approve_Order_effect = TRUE
+    Order_Product_effect = FALSE
+  -> State: 3.3 <-
+    Approve_Order_happened = TRUE
+    Approve_Order_included = FALSE
+    Pay_for_Order_included = TRUE
+    Pay_for_Order_pending = TRUE
+    Ship_Order_included = TRUE
+    Ship_Order_pending = TRUE
+    Ship_Order_accepted = FALSE
+    Pay_for_Order_accepted = FALSE
+    no_enabled = TRUE
+    Approve_Order_enabled = FALSE
+-- specification EX (EF ((((((!Order_Product_included | !Order_Product_pending) & (!Receive_Shipment_included | !Receive_Shipment_pending)) & (!Approve_Order_included | !Approve_Order_pending)) & (!Receive_Payment_included | !Receive_Payment_pending)) & (!Pay_for_Order_included | !Pay_for_Order_pending)) & (!Ship_Order_included | !Ship_Order_pending)) | EF (EG (((((EF Order_Product_accepted & EF Receive_Shipment_accepted) & EF Approve_Order_accepted) & EF Receive_Payment_accepted) & EF Pay_for_Order_accepted) & EF Ship_Order_accepted)))  is true
+nuXmv > pri[12Gnt_re[17Gachable_states 
+######################################################################
+system diameter: 3
+reachable states: 3 (2^1.58496) out of 262144 (2^18)
+######################################################################
+nuXmv > [9Gprint_reachable_states -v- d
+print_reachable_states: unknown option -
+usage: print_reachable_states [-h] [-v] [-d] [-f] [-o filename]
+   -h 		Prints the command usage.
+   -v 		Prints the list of reachable states.
+   -d 		Prints the list of reachable states with defines (Requires -v).
+   -f 		Prints the formula representing the reachable states.
+   -o filename	Prints the result on the specified filename instead of on standard output
+nuXmv > [9Gprint_reachable_states -v- d[34G d[K[35G d[35G- d [36Gd[K
+######################################################################
+system diameter: 3
+reachable states: 3 (2^1.58496) out of 262144 (2^18)
+  ------- State    1 ------
+  no_effect = FALSE
+  Ship_Order_effect = FALSE
+  Pay_for_Order_effect = FALSE
+  Receive_Payment_effect = FALSE
+  Approve_Order_effect = FALSE
+  Receive_Shipment_effect = FALSE
+  Order_Product_effect = FALSE
+  Ship_Order_accepted = TRUE
+  Pay_for_Order_accepted = TRUE
+  Receive_Payment_accepted = TRUE
+  Approve_Order_accepted = TRUE
+  Receive_Shipment_accepted = TRUE
+  Order_Product_accepted = TRUE
+  no_enabled = FALSE
+  Ship_Order_enabled = FALSE
+  Pay_for_Order_enabled = FALSE
+  Receive_Payment_enabled = FALSE
+  Approve_Order_enabled = FALSE
+  Receive_Shipment_enabled = FALSE
+  Order_Product_enabled = TRUE
+  Order_Product_happened = FALSE
+  Order_Product_included = TRUE
+  Order_Product_pending = FALSE
+  Receive_Shipment_happened = FALSE
+  Receive_Shipment_included = FALSE
+  Receive_Shipment_pending = FALSE
+  Approve_Order_happened = FALSE
+  Approve_Order_included = TRUE
+  Approve_Order_pending = FALSE
+  Receive_Payment_happened = FALSE
+  Receive_Payment_included = FALSE
+  Receive_Payment_pending = FALSE
+  Pay_for_Order_happened = FALSE
+  Pay_for_Order_included = FALSE
+  Pay_for_Order_pending = FALSE
+  Ship_Order_happened = FALSE
+  Ship_Order_included = FALSE
+  Ship_Order_pending = FALSE
+  ------- State    2 ------
+  no_effect = FALSE
+  Ship_Order_effect = FALSE
+  Pay_for_Order_effect = FALSE
+  Receive_Payment_effect = FALSE
+  Approve_Order_effect = FALSE
+  Receive_Shipment_effect = FALSE
+  Order_Product_effect = FALSE
+  Ship_Order_accepted = TRUE
+  Pay_for_Order_accepted = TRUE
+  Receive_Payment_accepted = TRUE
+  Approve_Order_accepted = TRUE
+  Receive_Shipment_accepted = TRUE
+  Order_Product_accepted = TRUE
+  no_enabled = FALSE
+  Ship_Order_enabled = FALSE
+  Pay_for_Order_enabled = FALSE
+  Receive_Payment_enabled = FALSE
+  Approve_Order_enabled = TRUE
+  Receive_Shipment_enabled = FALSE
+  Order_Product_enabled = FALSE
+  Order_Product_happened = TRUE
+  Order_Product_included = FALSE
+  Order_Product_pending = FALSE
+  Receive_Shipment_happened = FALSE
+  Receive_Shipment_included = FALSE
+  Receive_Shipment_pending = FALSE
+  Approve_Order_happened = FALSE
+  Approve_Order_included = TRUE
+  Approve_Order_pending = FALSE
+  Receive_Payment_happened = FALSE
+  Receive_Payment_included = FALSE
+  Receive_Payment_pending = FALSE
+  Pay_for_Order_happened = FALSE
+  Pay_for_Order_included = FALSE
+  Pay_for_Order_pending = FALSE
+  Ship_Order_happened = FALSE
+  Ship_Order_included = FALSE
+  Ship_Order_pending = FALSE
+  ------- State    3 ------
+  no_effect = FALSE
+  Ship_Order_effect = FALSE
+  Pay_for_Order_effect = FALSE
+  Receive_Payment_effect = FALSE
+  Approve_Order_effect = FALSE
+  Receive_Shipment_effect = FALSE
+  Order_Product_effect = FALSE
+  Ship_Order_accepted = FALSE
+  Pay_for_Order_accepted = FALSE
+  Receive_Payment_accepted = TRUE
+  Approve_Order_accepted = TRUE
+  Receive_Shipment_accepted = TRUE
+  Order_Product_accepted = TRUE
+  no_enabled = TRUE
+  Ship_Order_enabled = FALSE
+  Pay_for_Order_enabled = FALSE
+  Receive_Payment_enabled = FALSE
+  Approve_Order_enabled = FALSE
+  Receive_Shipment_enabled = FALSE
+  Order_Product_enabled = FALSE
+  Order_Product_happened = TRUE
+  Order_Product_included = FALSE
+  Order_Product_pending = FALSE
+  Receive_Shipment_happened = FALSE
+  Receive_Shipment_included = FALSE
+  Receive_Shipment_pending = FALSE
+  Approve_Order_happened = TRUE
+  Approve_Order_included = FALSE
+  Approve_Order_pending = FALSE
+  Receive_Payment_happened = FALSE
+  Receive_Payment_included = FALSE
+  Receive_Payment_pending = FALSE
+  Pay_for_Order_happened = FALSE
+  Pay_for_Order_included = TRUE
+  Pay_for_Order_pending = TRUE
+  Ship_Order_happened = FALSE
+  Ship_Order_included = TRUE
+  Ship_Order_pending = TRUE
+  -------------------------
+######################################################################
+nuXmv > quit
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-02-25 22:04:33+01:00 [COMMAND_EXIT_CODE="0"]

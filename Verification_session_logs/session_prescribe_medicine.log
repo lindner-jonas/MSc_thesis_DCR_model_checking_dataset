@@ -1,0 +1,325 @@
+Script started on 2026-02-26 13:27:51+01:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="282" LINES="67"]
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exitnuXmv -int Prescribe\ Medicine_4Events_11Terms.smv [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K_Medicine_4Events_11Terms.smv 
+[?2004l]133;C\]666;vte.shell.preexec!\*** This is nuXmv 2.1.0 (compiled on Fri Nov 29 13:41:31 2024)
+*** Copyright (c) 2014-2024, Fondazione Bruno Kessler
+*** For more information on nuXmv see https://nuxmv.fbk.eu
+*** or email to <nuxmv@fbk.eu>.
+*** Please report bugs at Please report bugs to <nusmv-users@fbk.eu>
+*** (click on "Login Anonymously" to access)
+*** Alternatively write to <nuxmv@fbk.eu>.
+
+*** This version of nuXmv is linked to NuSMV 2.7.0.
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@fbk.eu>.
+*** Copyright (C) 2010-2024, Fondazione Bruno Kessler
+
+*** This version of nuXmv is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of nuXmv is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+*** This version of nuXmv is linked to MathSAT
+*** Copyright (C) 2009-2019 by Fondazione Bruno Kessler
+*** Copyright (C) 2009-2019 by University of Trento and others
+*** See http://mathsat.fbk.eu
+
+nuXmv > rea[12Gd_m[15Godel 
+nuXmv > fla[12Gtten_hierarchy [9G
+nuXmv > ecn[11G[K[10G[Knc[12Gode_variables 
+nuXmv > buid[12G[K[12Gld_m[16Godel 
+nuXmv > chec[13Gk_ct[17Glspec 
+-- specification AG (((((Prescribe_medicine_included & Prescribe_medicine_pending) | (Sign_included & Sign_pending)) | (Give_medicine_included & Give_medicine_pending)) | (Dont_trust_included & Dont_trust_pending)) -> (((Prescribe_medicine_enabled | Sign_enabled) | Give_medicine_enabled) | Dont_trust_enabled))  is true
+-- specification (((EF Prescribe_medicine_enabled & EF Sign_enabled) & EF Give_medicine_enabled) & EF Dont_trust_enabled)  is true
+-- specification AG (((((Prescribe_medicine_included & Prescribe_medicine_pending) -> EF Prescribe_medicine_accepted) & ((Sign_included & Sign_pending) -> EF Sign_accepted)) & ((Give_medicine_included & Give_medicine_pending) -> EF Give_medicine_accepted)) & ((Dont_trust_included & Dont_trust_pending) -> EF Dont_trust_accepted))  is true
+-- specification EX (EF ((((!Prescribe_medicine_included | !Prescribe_medicine_pending) & (!Sign_included | !Sign_pending)) & (!Give_medicine_included | !Give_medicine_pending)) & (!Dont_trust_included | !Dont_trust_pending)) | EF (EG (((EF Prescribe_medicine_accepted & EF Sign_accepted) & EF Give_medicine_accepted) & EF Dont_trust_accepted)))  is true
+nuXmv > print[14G_re[17Gachable_states 
+######################################################################
+system diameter: 7
+reachable states: 10 (2^3.32193) out of 4096 (2^12)
+######################################################################
+nuXmv > 
+Display all 213 possibilities? (y or n) 
+[KnuXmv > [9Gprint_reachable_states -v -d
+######################################################################
+system diameter: 7
+reachable states: 10 (2^3.32193) out of 4096 (2^12)
+  ------- State    1 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = TRUE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = FALSE
+  Give_medicine_enabled = FALSE
+  Sign_enabled = FALSE
+  Prescribe_medicine_enabled = TRUE
+  Prescribe_medicine_happened = FALSE
+  Prescribe_medicine_included = TRUE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = FALSE
+  Sign_included = TRUE
+  Sign_pending = FALSE
+  Give_medicine_happened = FALSE
+  Give_medicine_included = TRUE
+  Give_medicine_pending = FALSE
+  Dont_trust_happened = FALSE
+  Dont_trust_included = TRUE
+  Dont_trust_pending = FALSE
+  ------- State    2 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = FALSE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = FALSE
+  Give_medicine_enabled = FALSE
+  Sign_enabled = TRUE
+  Prescribe_medicine_enabled = FALSE
+  Prescribe_medicine_happened = TRUE
+  Prescribe_medicine_included = FALSE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = FALSE
+  Sign_included = TRUE
+  Sign_pending = FALSE
+  Give_medicine_happened = FALSE
+  Give_medicine_included = TRUE
+  Give_medicine_pending = TRUE
+  Dont_trust_happened = FALSE
+  Dont_trust_included = TRUE
+  Dont_trust_pending = FALSE
+  ------- State    3 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = TRUE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = TRUE
+  Give_medicine_enabled = TRUE
+  Sign_enabled = TRUE
+  Prescribe_medicine_enabled = FALSE
+  Prescribe_medicine_happened = TRUE
+  Prescribe_medicine_included = FALSE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = TRUE
+  Sign_included = TRUE
+  Sign_pending = FALSE
+  Give_medicine_happened = FALSE
+  Give_medicine_included = TRUE
+  Give_medicine_pending = TRUE
+  Dont_trust_happened = TRUE
+  Dont_trust_included = TRUE
+  Dont_trust_pending = FALSE
+  ------- State    4 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = TRUE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = TRUE
+  Give_medicine_enabled = TRUE
+  Sign_enabled = TRUE
+  Prescribe_medicine_enabled = FALSE
+  Prescribe_medicine_happened = TRUE
+  Prescribe_medicine_included = FALSE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = TRUE
+  Sign_included = TRUE
+  Sign_pending = FALSE
+  Give_medicine_happened = FALSE
+  Give_medicine_included = TRUE
+  Give_medicine_pending = TRUE
+  Dont_trust_happened = FALSE
+  Dont_trust_included = TRUE
+  Dont_trust_pending = FALSE
+  ------- State    5 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = TRUE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = TRUE
+  Give_medicine_enabled = TRUE
+  Sign_enabled = TRUE
+  Prescribe_medicine_enabled = FALSE
+  Prescribe_medicine_happened = TRUE
+  Prescribe_medicine_included = FALSE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = TRUE
+  Sign_included = TRUE
+  Sign_pending = FALSE
+  Give_medicine_happened = TRUE
+  Give_medicine_included = TRUE
+  Give_medicine_pending = FALSE
+  Dont_trust_happened = TRUE
+  Dont_trust_included = TRUE
+  Dont_trust_pending = FALSE
+  ------- State    6 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = TRUE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = TRUE
+  Give_medicine_enabled = TRUE
+  Sign_enabled = TRUE
+  Prescribe_medicine_enabled = FALSE
+  Prescribe_medicine_happened = TRUE
+  Prescribe_medicine_included = FALSE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = TRUE
+  Sign_included = TRUE
+  Sign_pending = FALSE
+  Give_medicine_happened = TRUE
+  Give_medicine_included = TRUE
+  Give_medicine_pending = FALSE
+  Dont_trust_happened = FALSE
+  Dont_trust_included = TRUE
+  Dont_trust_pending = FALSE
+  ------- State    7 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = TRUE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = FALSE
+  Give_medicine_enabled = TRUE
+  Sign_enabled = TRUE
+  Prescribe_medicine_enabled = FALSE
+  Prescribe_medicine_happened = TRUE
+  Prescribe_medicine_included = FALSE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = TRUE
+  Sign_included = TRUE
+  Sign_pending = FALSE
+  Give_medicine_happened = TRUE
+  Give_medicine_included = TRUE
+  Give_medicine_pending = FALSE
+  Dont_trust_happened = TRUE
+  Dont_trust_included = FALSE
+  Dont_trust_pending = FALSE
+  ------- State    8 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = TRUE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = FALSE
+  Give_medicine_enabled = TRUE
+  Sign_enabled = TRUE
+  Prescribe_medicine_enabled = FALSE
+  Prescribe_medicine_happened = TRUE
+  Prescribe_medicine_included = FALSE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = TRUE
+  Sign_included = TRUE
+  Sign_pending = FALSE
+  Give_medicine_happened = TRUE
+  Give_medicine_included = TRUE
+  Give_medicine_pending = FALSE
+  Dont_trust_happened = FALSE
+  Dont_trust_included = FALSE
+  Dont_trust_pending = FALSE
+  ------- State    9 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = TRUE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = TRUE
+  Give_medicine_enabled = FALSE
+  Sign_enabled = TRUE
+  Prescribe_medicine_enabled = FALSE
+  Prescribe_medicine_happened = TRUE
+  Prescribe_medicine_included = FALSE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = TRUE
+  Sign_included = TRUE
+  Sign_pending = TRUE
+  Give_medicine_happened = FALSE
+  Give_medicine_included = FALSE
+  Give_medicine_pending = TRUE
+  Dont_trust_happened = TRUE
+  Dont_trust_included = TRUE
+  Dont_trust_pending = FALSE
+  ------- State   10 ------
+  no_effect = FALSE
+  Dont_trust_effect = FALSE
+  Give_medicine_effect = FALSE
+  Sign_effect = FALSE
+  Prescribe_medicine_effect = FALSE
+  Dont_trust_accepted = TRUE
+  Give_medicine_accepted = TRUE
+  Sign_accepted = TRUE
+  Prescribe_medicine_accepted = TRUE
+  no_enabled = FALSE
+  Dont_trust_enabled = TRUE
+  Give_medicine_enabled = FALSE
+  Sign_enabled = TRUE
+  Prescribe_medicine_enabled = FALSE
+  Prescribe_medicine_happened = TRUE
+  Prescribe_medicine_included = FALSE
+  Prescribe_medicine_pending = FALSE
+  Sign_happened = TRUE
+  Sign_included = TRUE
+  Sign_pending = TRUE
+  Give_medicine_happened = TRUE
+  Give_medicine_included = FALSE
+  Give_medicine_pending = FALSE
+  Dont_trust_happened = TRUE
+  Dont_trust_included = TRUE
+  Dont_trust_pending = FALSE
+  -------------------------
+######################################################################
+nuXmv > quit
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-02-26 13:28:31+01:00 [COMMAND_EXIT_CODE="0"]

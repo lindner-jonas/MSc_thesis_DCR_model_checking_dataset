@@ -1,0 +1,47 @@
+Script started on 2026-02-25 22:08:33+01:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="92" LINES="65"]
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\nuXmv -int Puori_Product_Quality_Control_16Events_44Terms.smv 
+[?2004l]133;C\]666;vte.shell.preexec!\*** This is nuXmv 2.1.0 (compiled on Fri Nov 29 13:41:31 2024)
+*** Copyright (c) 2014-2024, Fondazione Bruno Kessler
+*** For more information on nuXmv see https://nuxmv.fbk.eu
+*** or email to <nuxmv@fbk.eu>.
+*** Please report bugs at Please report bugs to <nusmv-users@fbk.eu>
+*** (click on "Login Anonymously" to access)
+*** Alternatively write to <nuxmv@fbk.eu>.
+
+*** This version of nuXmv is linked to NuSMV 2.7.0.
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@fbk.eu>.
+*** Copyright (C) 2010-2024, Fondazione Bruno Kessler
+
+*** This version of nuXmv is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of nuXmv is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+*** This version of nuXmv is linked to MathSAT
+*** Copyright (C) 2009-2019 by Fondazione Bruno Kessler
+*** Copyright (C) 2009-2019 by University of Trento and others
+*** See http://mathsat.fbk.eu
+
+nuXmv > rea[12Gd_m[15Godel 
+nuXmv > fla[12Gtten_hierarchy 
+nuXmv > enco[13Gde_variables 
+nuXmv > bu[11Gild_m[16Godel 
+nuXmv > che[12Gck_ctl[18Gspec 
+-- specification AG (((((((((((((((((A2_included & A2_pending) | (A3_included & A3_pending)) | (A1_included & A1_pending)) | (A4_included & A4_pending)) | (A5_included & A5_pending)) | (A6_included & A6_pending)) | (A7_included & A7_pending)) | (A8_included & A8_pending)) | (A9_included & A9_pending)) | (A10_included & A10_pending)) | (A11_included & A11_pending)) | (A16_included & A16_pending)) | (A12_included & A12_pending)) | (A13_included & A13_pending)) | (A14_included & A14_pending)) | (A15_included & A15_pending)) -> (((((((((((((((A2_enabled | A3_enabled) | A1_enabled) | A4_enabled) | A5_enabled) | A6_enabled) | A7_enabled) | A8_enabled) | A9_enabled) | A10_enabled) | A11_enabled) | A16_enabled) | A12_enabled) | A13_enabled) | A14_enabled) | A15_enabled))  is true
+-- specification (((((((((((((((EF A2_enabled & EF A3_enabled) & EF A1_enabled) & EF A4_enabled) & EF A5_enabled) & EF A6_enabled) & EF A7_enabled) & EF A8_enabled) & EF A9_enabled) & EF A10_enabled) & EF A11_enabled) & EF A16_enabled) & EF A12_enabled) & EF A13_enabled) & EF A14_enabled) & EF A15_enabled)  is true
+-- specification AG (((((((((((((((((A2_included & A2_pending) -> EF A2_accepted) & ((A3_included & A3_pending) -> EF A3_accepted)) & ((A1_included & A1_pending) -> EF A1_accepted)) & ((A4_included & A4_pending) -> EF A4_accepted)) & ((A5_included & A5_pending) -> EF A5_accepted)) & ((A6_included & A6_pending) -> EF A6_accepted)) & ((A7_included & A7_pending) -> EF A7_accepted)) & ((A8_included & A8_pending) -> EF A8_accepted)) & ((A9_included & A9_pending) -> EF A9_accepted)) & ((A10_included & A10_pending) -> EF A10_accepted)) & ((A11_included & A11_pending) -> EF A11_accepted)) & ((A16_included & A16_pending) -> EF A16_accepted)) & ((A12_included & A12_pending) -> EF A12_accepted)) & ((A13_included & A13_pending) -> EF A13_accepted)) & ((A14_included & A14_pending) -> EF A14_accepted)) & ((A15_included & A15_pending) -> EF A15_accepted))  is true
+-- specification EX (EF ((((((((((((((((!A2_included | !A2_pending) & (!A3_included | !A3_pending)) & (!A1_included | !A1_pending)) & (!A4_included | !A4_pending)) & (!A5_included | !A5_pending)) & (!A6_included | !A6_pending)) & (!A7_included | !A7_pending)) & (!A8_included | !A8_pending)) & (!A9_included | !A9_pending)) & (!A10_included | !A10_pending)) & (!A11_included | !A11_pending)) & (!A16_included | !A16_pending)) & (!A12_included | !A12_pending)) & (!A13_included | !A13_pending)) & (!A14_included | !A14_pending)) & (!A15_included | !A15_pending)) | EF (EG (((((((((((((((EF A2_accepted & EF A3_accepted) & EF A1_accepted) & EF A4_accepted) & EF A5_accepted) & EF A6_accepted) & EF A7_accepted) & EF A8_accepted) & EF A9_accepted) & EF A10_accepted) & EF A11_accepted) & EF A16_accepted) & EF A12_accepted) & EF A13_accepted) & EF A14_accepted) & EF A15_accepted)))  is true
+nuXmv > re[10G[K[9G[Kprint[14G_rew[17G[Ka[18Gchable_states 
+######################################################################
+system diameter: 31
+reachable states: 64168 (2^15.9696) out of 2.81475e+14 (2^48)
+######################################################################
+nuXmv > quit
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-02-25 22:09:52+01:00 [COMMAND_EXIT_CODE="0"]

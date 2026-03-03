@@ -1,0 +1,123 @@
+MODULE main
+    VAR
+    Has_reached_pension_age_happened : boolean;
+  Has_reached_pension_age_included : boolean;
+  Has_reached_pension_age_pending : boolean;
+  Grant_public_pension_happened : boolean;
+  Grant_public_pension_included : boolean;
+  Grant_public_pension_pending : boolean;
+  Has_lived_in_Denmark_for_the_last_8_years_happened : boolean;
+  Has_lived_in_Denmark_for_the_last_8_years_included : boolean;
+  Has_lived_in_Denmark_for_the_last_8_years_pending : boolean;
+  Has_danish_citizenship_happened : boolean;
+  Has_danish_citizenship_included : boolean;
+  Has_danish_citizenship_pending : boolean;
+  Lives_in_Denmark_happened : boolean;
+  Lives_in_Denmark_included : boolean;
+  Lives_in_Denmark_pending : boolean;
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened : boolean;
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included : boolean;
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending : boolean;
+  
+    INIT
+    (
+  ( Has_reached_pension_age_happened = TRUE ) &
+  ( Has_reached_pension_age_included = TRUE ) &
+  ( Has_reached_pension_age_pending = FALSE ) &
+  ( Grant_public_pension_happened = FALSE ) &
+  ( Grant_public_pension_included = TRUE ) &
+  ( Grant_public_pension_pending = TRUE ) &
+  ( Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE ) &
+  ( Has_lived_in_Denmark_for_the_last_8_years_included = FALSE ) &
+  ( Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE ) &
+  ( Has_danish_citizenship_happened = FALSE ) &
+  ( Has_danish_citizenship_included = TRUE ) &
+  ( Has_danish_citizenship_pending = FALSE ) &
+  ( Lives_in_Denmark_happened = FALSE ) &
+  ( Lives_in_Denmark_included = TRUE ) &
+  ( Lives_in_Denmark_pending = FALSE ) &
+  ( Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = FALSE ) &
+  ( Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE ) &
+  ( Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE ) 
+    )
+    TRANS
+    ( 
+  ( (Has_reached_pension_age_enabled) & (Has_reached_pension_age_effect) ) |
+  ( (Grant_public_pension_enabled) & (Grant_public_pension_effect) ) |
+  ( (Has_lived_in_Denmark_for_the_last_8_years_enabled) & (Has_lived_in_Denmark_for_the_last_8_years_effect) ) |
+  ( (Has_danish_citizenship_enabled) & (Has_danish_citizenship_effect) ) |
+  ( (Lives_in_Denmark_enabled) & (Lives_in_Denmark_effect) ) |
+  ( (Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled) & (Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect) ) |
+  ( no_enabled & no_effect )
+    )
+    DEFINE
+    Has_reached_pension_age_enabled := Has_reached_pension_age_included ;
+  Grant_public_pension_enabled := Grant_public_pension_included & (Has_reached_pension_age_happened | !Has_reached_pension_age_included) & (Has_lived_in_Denmark_for_the_last_8_years_happened | !Has_lived_in_Denmark_for_the_last_8_years_included) & (Has_danish_citizenship_happened | !Has_danish_citizenship_included) & (Lives_in_Denmark_happened | !Lives_in_Denmark_included) & (Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened | !Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) ;
+  Has_lived_in_Denmark_for_the_last_8_years_enabled := Has_lived_in_Denmark_for_the_last_8_years_included ;
+  Has_danish_citizenship_enabled := Has_danish_citizenship_included ;
+  Lives_in_Denmark_enabled := Lives_in_Denmark_included ;
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled := Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included ;
+  no_enabled := !Has_reached_pension_age_enabled & !Grant_public_pension_enabled & !Has_lived_in_Denmark_for_the_last_8_years_enabled & !Has_danish_citizenship_enabled & !Lives_in_Denmark_enabled & !Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled ;
+    Has_reached_pension_age_accepted := ( !Has_reached_pension_age_included | !Has_reached_pension_age_pending | Has_reached_pension_age_enabled ); 
+  Grant_public_pension_accepted := ( !Grant_public_pension_included | !Grant_public_pension_pending | Grant_public_pension_enabled ); 
+  Has_lived_in_Denmark_for_the_last_8_years_accepted := ( !Has_lived_in_Denmark_for_the_last_8_years_included | !Has_lived_in_Denmark_for_the_last_8_years_pending | Has_lived_in_Denmark_for_the_last_8_years_enabled ); 
+  Has_danish_citizenship_accepted := ( !Has_danish_citizenship_included | !Has_danish_citizenship_pending | Has_danish_citizenship_enabled ); 
+  Lives_in_Denmark_accepted := ( !Lives_in_Denmark_included | !Lives_in_Denmark_pending | Lives_in_Denmark_enabled ); 
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted := ( !Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included | !Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending | Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled ); 
+  Has_reached_pension_age_effect := ( (next(Has_reached_pension_age_happened) = TRUE) & (next(Has_reached_pension_age_included) = Has_reached_pension_age_included) & (next(Has_reached_pension_age_pending) = FALSE) & (next(Grant_public_pension_happened) = Grant_public_pension_happened) & (next(Grant_public_pension_included) = Grant_public_pension_included) & (next(Grant_public_pension_pending) = TRUE) & (next(Has_lived_in_Denmark_for_the_last_8_years_happened) = Has_lived_in_Denmark_for_the_last_8_years_happened) & (next(Has_lived_in_Denmark_for_the_last_8_years_included) = Has_lived_in_Denmark_for_the_last_8_years_included) & (next(Has_lived_in_Denmark_for_the_last_8_years_pending) = Has_lived_in_Denmark_for_the_last_8_years_pending) & (next(Has_danish_citizenship_happened) = Has_danish_citizenship_happened) & (next(Has_danish_citizenship_included) = Has_danish_citizenship_included) & (next(Has_danish_citizenship_pending) = Has_danish_citizenship_pending) & (next(Lives_in_Denmark_happened) = Lives_in_Denmark_happened) & (next(Lives_in_Denmark_included) = Lives_in_Denmark_included) & (next(Lives_in_Denmark_pending) = Lives_in_Denmark_pending) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) ) ;
+  Grant_public_pension_effect := ( (next(Has_reached_pension_age_happened) = Has_reached_pension_age_happened) & (next(Has_reached_pension_age_included) = Has_reached_pension_age_included) & (next(Has_reached_pension_age_pending) = Has_reached_pension_age_pending) & (next(Grant_public_pension_happened) = TRUE) & (next(Grant_public_pension_included) = Grant_public_pension_included) & (next(Grant_public_pension_pending) = FALSE) & (next(Has_lived_in_Denmark_for_the_last_8_years_happened) = Has_lived_in_Denmark_for_the_last_8_years_happened) & (next(Has_lived_in_Denmark_for_the_last_8_years_included) = Has_lived_in_Denmark_for_the_last_8_years_included) & (next(Has_lived_in_Denmark_for_the_last_8_years_pending) = Has_lived_in_Denmark_for_the_last_8_years_pending) & (next(Has_danish_citizenship_happened) = Has_danish_citizenship_happened) & (next(Has_danish_citizenship_included) = Has_danish_citizenship_included) & (next(Has_danish_citizenship_pending) = Has_danish_citizenship_pending) & (next(Lives_in_Denmark_happened) = Lives_in_Denmark_happened) & (next(Lives_in_Denmark_included) = Lives_in_Denmark_included) & (next(Lives_in_Denmark_pending) = Lives_in_Denmark_pending) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) ) ;
+  Has_lived_in_Denmark_for_the_last_8_years_effect := ( (next(Has_reached_pension_age_happened) = Has_reached_pension_age_happened) & (next(Has_reached_pension_age_included) = Has_reached_pension_age_included) & (next(Has_reached_pension_age_pending) = Has_reached_pension_age_pending) & (next(Grant_public_pension_happened) = Grant_public_pension_happened) & (next(Grant_public_pension_included) = Grant_public_pension_included) & (next(Grant_public_pension_pending) = Grant_public_pension_pending) & (next(Has_lived_in_Denmark_for_the_last_8_years_happened) = TRUE) & (next(Has_lived_in_Denmark_for_the_last_8_years_included) = Has_lived_in_Denmark_for_the_last_8_years_included) & (next(Has_lived_in_Denmark_for_the_last_8_years_pending) = FALSE) & (next(Has_danish_citizenship_happened) = Has_danish_citizenship_happened) & (next(Has_danish_citizenship_included) = Has_danish_citizenship_included) & (next(Has_danish_citizenship_pending) = Has_danish_citizenship_pending) & (next(Lives_in_Denmark_happened) = Lives_in_Denmark_happened) & (next(Lives_in_Denmark_included) = Lives_in_Denmark_included) & (next(Lives_in_Denmark_pending) = Lives_in_Denmark_pending) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) = FALSE) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) ) ;
+  Has_danish_citizenship_effect := ( (next(Has_reached_pension_age_happened) = Has_reached_pension_age_happened) & (next(Has_reached_pension_age_included) = Has_reached_pension_age_included) & (next(Has_reached_pension_age_pending) = Has_reached_pension_age_pending) & (next(Grant_public_pension_happened) = Grant_public_pension_happened) & (next(Grant_public_pension_included) = Grant_public_pension_included) & (next(Grant_public_pension_pending) = Grant_public_pension_pending) & (next(Has_lived_in_Denmark_for_the_last_8_years_happened) = Has_lived_in_Denmark_for_the_last_8_years_happened) & (next(Has_lived_in_Denmark_for_the_last_8_years_included) = Has_lived_in_Denmark_for_the_last_8_years_included) & (next(Has_lived_in_Denmark_for_the_last_8_years_pending) = Has_lived_in_Denmark_for_the_last_8_years_pending) & (next(Has_danish_citizenship_happened) = TRUE) & (next(Has_danish_citizenship_included) = Has_danish_citizenship_included) & (next(Has_danish_citizenship_pending) = FALSE) & (next(Lives_in_Denmark_happened) = Lives_in_Denmark_happened) & (next(Lives_in_Denmark_included) = Lives_in_Denmark_included) & (next(Lives_in_Denmark_pending) = Lives_in_Denmark_pending) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) ) ;
+  Lives_in_Denmark_effect := ( (next(Has_reached_pension_age_happened) = Has_reached_pension_age_happened) & (next(Has_reached_pension_age_included) = Has_reached_pension_age_included) & (next(Has_reached_pension_age_pending) = Has_reached_pension_age_pending) & (next(Grant_public_pension_happened) = Grant_public_pension_happened) & (next(Grant_public_pension_included) = Grant_public_pension_included) & (next(Grant_public_pension_pending) = Grant_public_pension_pending) & (next(Has_lived_in_Denmark_for_the_last_8_years_happened) = Has_lived_in_Denmark_for_the_last_8_years_happened) & (next(Has_lived_in_Denmark_for_the_last_8_years_included) = TRUE) & (next(Has_lived_in_Denmark_for_the_last_8_years_pending) = Has_lived_in_Denmark_for_the_last_8_years_pending) & (next(Has_danish_citizenship_happened) = Has_danish_citizenship_happened) & (next(Has_danish_citizenship_included) = Has_danish_citizenship_included) & (next(Has_danish_citizenship_pending) = Has_danish_citizenship_pending) & (next(Lives_in_Denmark_happened) = TRUE) & (next(Lives_in_Denmark_included) = Lives_in_Denmark_included) & (next(Lives_in_Denmark_pending) = FALSE) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) ) ;
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect := ( (next(Has_reached_pension_age_happened) = Has_reached_pension_age_happened) & (next(Has_reached_pension_age_included) = Has_reached_pension_age_included) & (next(Has_reached_pension_age_pending) = Has_reached_pension_age_pending) & (next(Grant_public_pension_happened) = Grant_public_pension_happened) & (next(Grant_public_pension_included) = Grant_public_pension_included) & (next(Grant_public_pension_pending) = Grant_public_pension_pending) & (next(Has_lived_in_Denmark_for_the_last_8_years_happened) = Has_lived_in_Denmark_for_the_last_8_years_happened) & (next(Has_lived_in_Denmark_for_the_last_8_years_included) = FALSE) & (next(Has_lived_in_Denmark_for_the_last_8_years_pending) = Has_lived_in_Denmark_for_the_last_8_years_pending) & (next(Has_danish_citizenship_happened) = Has_danish_citizenship_happened) & (next(Has_danish_citizenship_included) = Has_danish_citizenship_included) & (next(Has_danish_citizenship_pending) = Has_danish_citizenship_pending) & (next(Lives_in_Denmark_happened) = Lives_in_Denmark_happened) & (next(Lives_in_Denmark_included) = Lives_in_Denmark_included) & (next(Lives_in_Denmark_pending) = Lives_in_Denmark_pending) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) = TRUE) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) & (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) = FALSE) ) ;
+  no_effect := (  (next(Has_reached_pension_age_happened) = Has_reached_pension_age_happened) &  (next(Has_reached_pension_age_included) = Has_reached_pension_age_included) &  (next(Has_reached_pension_age_pending) = Has_reached_pension_age_pending) &  (next(Grant_public_pension_happened) = Grant_public_pension_happened) &  (next(Grant_public_pension_included) = Grant_public_pension_included) &  (next(Grant_public_pension_pending) = Grant_public_pension_pending) &  (next(Has_lived_in_Denmark_for_the_last_8_years_happened) = Has_lived_in_Denmark_for_the_last_8_years_happened) &  (next(Has_lived_in_Denmark_for_the_last_8_years_included) = Has_lived_in_Denmark_for_the_last_8_years_included) &  (next(Has_lived_in_Denmark_for_the_last_8_years_pending) = Has_lived_in_Denmark_for_the_last_8_years_pending) &  (next(Has_danish_citizenship_happened) = Has_danish_citizenship_happened) &  (next(Has_danish_citizenship_included) = Has_danish_citizenship_included) &  (next(Has_danish_citizenship_pending) = Has_danish_citizenship_pending) &  (next(Lives_in_Denmark_happened) = Lives_in_Denmark_happened) &  (next(Lives_in_Denmark_included) = Lives_in_Denmark_included) &  (next(Lives_in_Denmark_pending) = Lives_in_Denmark_pending) &  (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened) &  (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included) &  (next(Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) = Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) ) ;
+    CTLSPEC   -- deadlock-freedom
+    AG (
+    (
+    (Has_reached_pension_age_included & Has_reached_pension_age_pending) |
+    (Grant_public_pension_included & Grant_public_pension_pending) |
+    (Has_lived_in_Denmark_for_the_last_8_years_included & Has_lived_in_Denmark_for_the_last_8_years_pending) |
+    (Has_danish_citizenship_included & Has_danish_citizenship_pending) |
+    (Lives_in_Denmark_included & Lives_in_Denmark_pending) |
+    (Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included & Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) 
+    )
+    ->
+    (
+    Has_reached_pension_age_enabled |
+    Grant_public_pension_enabled |
+    Has_lived_in_Denmark_for_the_last_8_years_enabled |
+    Has_danish_citizenship_enabled |
+    Lives_in_Denmark_enabled |
+    Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled 
+    )
+    )
+    CTLSPEC   -- absence of dead activities
+    (EF Has_reached_pension_age_enabled) & (EF Grant_public_pension_enabled) & (EF Has_lived_in_Denmark_for_the_last_8_years_enabled) & (EF Has_danish_citizenship_enabled) & (EF Lives_in_Denmark_enabled) & (EF Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled) 
+    CTLSPEC   -- livelock-freedom
+    AG (
+    ( (Has_reached_pension_age_included & Has_reached_pension_age_pending) -> (EF Has_reached_pension_age_accepted) ) &
+    ( (Grant_public_pension_included & Grant_public_pension_pending) -> (EF Grant_public_pension_accepted) ) &
+    ( (Has_lived_in_Denmark_for_the_last_8_years_included & Has_lived_in_Denmark_for_the_last_8_years_pending) -> (EF Has_lived_in_Denmark_for_the_last_8_years_accepted) ) &
+    ( (Has_danish_citizenship_included & Has_danish_citizenship_pending) -> (EF Has_danish_citizenship_accepted) ) &
+    ( (Lives_in_Denmark_included & Lives_in_Denmark_pending) -> (EF Lives_in_Denmark_accepted) ) &
+    ( (Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included & Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) -> (EF Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted) ) 
+   )
+    CTLSPEC   -- consistency
+    EX (
+    ( EF (
+    (!Has_reached_pension_age_included | !Has_reached_pension_age_pending) &
+    (!Grant_public_pension_included | !Grant_public_pension_pending) &
+    (!Has_lived_in_Denmark_for_the_last_8_years_included | !Has_lived_in_Denmark_for_the_last_8_years_pending) &
+    (!Has_danish_citizenship_included | !Has_danish_citizenship_pending) &
+    (!Lives_in_Denmark_included | !Lives_in_Denmark_pending) &
+    (!Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included | !Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) ) )
+    |
+    ( EF EG (
+    ( EF Has_reached_pension_age_accepted ) &
+    ( EF Grant_public_pension_accepted ) &
+    ( EF Has_lived_in_Denmark_for_the_last_8_years_accepted ) &
+    ( EF Has_danish_citizenship_accepted ) &
+    ( EF Lives_in_Denmark_accepted ) &
+    ( EF Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted ) ) )
+    )
+    

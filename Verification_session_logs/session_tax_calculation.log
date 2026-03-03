@@ -1,0 +1,458 @@
+Script started on 2026-02-25 22:12:00+01:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="92" LINES="65"]
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exit[KnuXmv T[K-int Tax_Calculation_4Events_6Terms.smv 
+[?2004l]133;C\]666;vte.shell.preexec!\*** This is nuXmv 2.1.0 (compiled on Fri Nov 29 13:41:31 2024)
+*** Copyright (c) 2014-2024, Fondazione Bruno Kessler
+*** For more information on nuXmv see https://nuxmv.fbk.eu
+*** or email to <nuxmv@fbk.eu>.
+*** Please report bugs at Please report bugs to <nusmv-users@fbk.eu>
+*** (click on "Login Anonymously" to access)
+*** Alternatively write to <nuxmv@fbk.eu>.
+
+*** This version of nuXmv is linked to NuSMV 2.7.0.
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@fbk.eu>.
+*** Copyright (C) 2010-2024, Fondazione Bruno Kessler
+
+*** This version of nuXmv is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of nuXmv is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+*** This version of nuXmv is linked to MathSAT
+*** Copyright (C) 2009-2019 by Fondazione Bruno Kessler
+*** Copyright (C) 2009-2019 by University of Trento and others
+*** See http://mathsat.fbk.eu
+
+nuXmv > rea[12Gd_m[15Godel 
+nuXmv > fla[12Gtten_hierarchy 
+nuXmv > enc[12Gode_variables 
+nuXmv > bu[11Gild_m[16Godel 
+nuXmv > che[12Gck_ct[17Glspec 
+-- specification AG (((((Consult_Employees_salary_agreement_included & Consult_Employees_salary_agreement_pending) | (Report_Additional_Income_Sources_included & Report_Additional_Income_Sources_pending)) | (Perform_tax_calculation_for_employee_included & Perform_tax_calculation_for_employee_pending)) | (Pay_salary_included & Pay_salary_pending)) -> (((Consult_Employees_salary_agreement_enabled | Report_Additional_Income_Sources_enabled) | Perform_tax_calculation_for_employee_enabled) | Pay_salary_enabled))  is true
+-- specification (((EF Consult_Employees_salary_agreement_enabled & EF Report_Additional_Income_Sources_enabled) & EF Perform_tax_calculation_for_employee_enabled) & EF Pay_salary_enabled)  is true
+-- specification AG (((((Consult_Employees_salary_agreement_included & Consult_Employees_salary_agreement_pending) -> EF Consult_Employees_salary_agreement_accepted) & ((Report_Additional_Income_Sources_included & Report_Additional_Income_Sources_pending) -> EF Report_Additional_Income_Sources_accepted)) & ((Perform_tax_calculation_for_employee_included & Perform_tax_calculation_for_employee_pending) -> EF Perform_tax_calculation_for_employee_accepted)) & ((Pay_salary_included & Pay_salary_pending) -> EF Pay_salary_accepted))  is true
+-- specification EX (EF ((((!Consult_Employees_salary_agreement_included | !Consult_Employees_salary_agreement_pending) & (!Report_Additional_Income_Sources_included | !Report_Additional_Income_Sources_pending)) & (!Perform_tax_calculation_for_employee_included | !Perform_tax_calculation_for_employee_pending)) & (!Pay_salary_included | !Pay_salary_pending)) | EF (EG (((EF Consult_Employees_salary_agreement_accepted & EF Report_Additional_Income_Sources_accepted) & EF Perform_tax_calculation_for_employee_accepted) & EF Pay_salary_accepted)))  is true
+nuXmv > pri[12Gnt_re[17Gachable_states 
+######################################################################
+system diameter: 7
+reachable states: 15 (2^3.90689) out of 4096 (2^12)
+######################################################################
+nuXmv > [9Gprint_reachable_states -v-[34G[K .-d[37G[K[36G[K[35G[K-d
+######################################################################
+system diameter: 7
+reachable states: 15 (2^3.90689) out of 4096 (2^12)
+  ------- State    1 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = TRUE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = FALSE
+  Perform_tax_calculation_for_employee_enabled = FALSE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = FALSE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = FALSE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = FALSE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = FALSE
+  Pay_salary_happened = FALSE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = FALSE
+  ------- State    2 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = TRUE
+  Perform_tax_calculation_for_employee_accepted = FALSE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = FALSE
+  Perform_tax_calculation_for_employee_enabled = FALSE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = FALSE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = TRUE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = FALSE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = TRUE
+  Pay_salary_happened = FALSE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = FALSE
+  ------- State    3 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = FALSE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = FALSE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = FALSE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = FALSE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = TRUE
+  Pay_salary_happened = FALSE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State    4 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = TRUE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = TRUE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = FALSE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = FALSE
+  Pay_salary_happened = FALSE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State    5 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = TRUE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = TRUE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = FALSE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = FALSE
+  Pay_salary_happened = TRUE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State    6 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = TRUE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = TRUE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = FALSE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = FALSE
+  Pay_salary_happened = TRUE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = FALSE
+  ------- State    7 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = FALSE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = FALSE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = FALSE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = TRUE
+  Pay_salary_happened = TRUE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State    8 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = FALSE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = FALSE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = FALSE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = TRUE
+  Pay_salary_happened = FALSE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State    9 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = FALSE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = FALSE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = TRUE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = FALSE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = TRUE
+  Pay_salary_happened = FALSE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State   10 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = FALSE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = FALSE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = TRUE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = TRUE
+  Pay_salary_happened = FALSE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State   11 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = TRUE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = TRUE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = TRUE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = FALSE
+  Pay_salary_happened = FALSE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State   12 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = FALSE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = FALSE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = TRUE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = TRUE
+  Pay_salary_happened = TRUE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State   13 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = TRUE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = TRUE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = TRUE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = FALSE
+  Pay_salary_happened = TRUE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = TRUE
+  ------- State   14 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = TRUE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = FALSE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = TRUE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = TRUE
+  Pay_salary_happened = TRUE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = FALSE
+  ------- State   15 ------
+  no_effect = FALSE
+  Pay_salary_effect = FALSE
+  Perform_tax_calculation_for_employee_effect = FALSE
+  Report_Additional_Income_Sources_effect = FALSE
+  Consult_Employees_salary_agreement_effect = FALSE
+  Pay_salary_accepted = TRUE
+  Perform_tax_calculation_for_employee_accepted = TRUE
+  Report_Additional_Income_Sources_accepted = TRUE
+  Consult_Employees_salary_agreement_accepted = TRUE
+  no_enabled = FALSE
+  Pay_salary_enabled = TRUE
+  Perform_tax_calculation_for_employee_enabled = TRUE
+  Report_Additional_Income_Sources_enabled = TRUE
+  Consult_Employees_salary_agreement_enabled = TRUE
+  Consult_Employees_salary_agreement_happened = TRUE
+  Consult_Employees_salary_agreement_included = TRUE
+  Consult_Employees_salary_agreement_pending = FALSE
+  Report_Additional_Income_Sources_happened = TRUE
+  Report_Additional_Income_Sources_included = TRUE
+  Report_Additional_Income_Sources_pending = FALSE
+  Perform_tax_calculation_for_employee_happened = TRUE
+  Perform_tax_calculation_for_employee_included = TRUE
+  Perform_tax_calculation_for_employee_pending = FALSE
+  Pay_salary_happened = TRUE
+  Pay_salary_included = TRUE
+  Pay_salary_pending = FALSE
+  -------------------------
+######################################################################
+nuXmv > quit
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-02-25 22:12:56+01:00 [COMMAND_EXIT_CODE="0"]

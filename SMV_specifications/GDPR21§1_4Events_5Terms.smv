@@ -1,0 +1,93 @@
+MODULE main
+    VAR
+    D1_happened : boolean;
+  D1_included : boolean;
+  D1_pending : boolean;
+  D2_happened : boolean;
+  D2_included : boolean;
+  D2_pending : boolean;
+  D3_happened : boolean;
+  D3_included : boolean;
+  D3_pending : boolean;
+  D4_happened : boolean;
+  D4_included : boolean;
+  D4_pending : boolean;
+  
+    INIT
+    (
+  ( D1_happened = FALSE ) &
+  ( D1_included = TRUE ) &
+  ( D1_pending = FALSE ) &
+  ( D2_happened = FALSE ) &
+  ( D2_included = TRUE ) &
+  ( D2_pending = FALSE ) &
+  ( D3_happened = FALSE ) &
+  ( D3_included = TRUE ) &
+  ( D3_pending = FALSE ) &
+  ( D4_happened = FALSE ) &
+  ( D4_included = TRUE ) &
+  ( D4_pending = FALSE ) 
+    )
+    TRANS
+    ( 
+  ( (D1_enabled) & (D1_effect) ) |
+  ( (D2_enabled) & (D2_effect) ) |
+  ( (D3_enabled) & (D3_effect) ) |
+  ( (D4_enabled) & (D4_effect) ) |
+  ( no_enabled & no_effect )
+    )
+    DEFINE
+    D1_enabled := D1_included ;
+  D2_enabled := D2_included ;
+  D3_enabled := D3_included ;
+  D4_enabled := D4_included ;
+  no_enabled := !D1_enabled & !D2_enabled & !D3_enabled & !D4_enabled ;
+    D1_accepted := ( !D1_included | !D1_pending | D1_enabled ); 
+  D2_accepted := ( !D2_included | !D2_pending | D2_enabled ); 
+  D3_accepted := ( !D3_included | !D3_pending | D3_enabled ); 
+  D4_accepted := ( !D4_included | !D4_pending | D4_enabled ); 
+  D1_effect := ( (next(D1_happened) = TRUE) & (next(D1_included) = D1_included) & (next(D1_pending) = FALSE) & (next(D2_happened) = D2_happened) & (next(D2_included) = D2_included) & (next(D2_pending) = D2_pending) & (next(D3_happened) = D3_happened) & (next(D3_included) = D3_included) & (next(D3_pending) = D3_pending) & (next(D4_happened) = D4_happened) & (next(D4_included) = D4_included) & (next(D4_pending) = D4_pending) ) ;
+  D2_effect := ( (next(D1_happened) = D1_happened) & (next(D1_included) = D1_included) & (next(D1_pending) = D1_pending) & (next(D2_happened) = TRUE) & (next(D2_included) = D2_included) & (next(D2_pending) = FALSE) & (next(D3_happened) = D3_happened) & (next(D3_included) = D3_included) & (next(D3_pending) = D3_pending) & (next(D4_happened) = D4_happened) & (next(D4_included) = D4_included) & (next(D4_pending) = TRUE) ) ;
+  D3_effect := ( (next(D1_happened) = D1_happened) & (next(D1_included) = TRUE) & (next(D1_pending) = D1_pending) & (next(D2_happened) = D2_happened) & (next(D2_included) = FALSE) & (next(D2_pending) = D2_pending) & (next(D3_happened) = TRUE) & (next(D3_included) = D3_included) & (next(D3_pending) = FALSE) & (next(D4_happened) = D4_happened) & (next(D4_included) = FALSE) & (next(D4_pending) = D4_pending) ) ;
+  D4_effect := ( (next(D1_happened) = D1_happened) & (next(D1_included) = FALSE) & (next(D1_pending) = D1_pending) & (next(D2_happened) = D2_happened) & (next(D2_included) = D2_included) & (next(D2_pending) = D2_pending) & (next(D3_happened) = D3_happened) & (next(D3_included) = D3_included) & (next(D3_pending) = D3_pending) & (next(D4_happened) = TRUE) & (next(D4_included) = D4_included) & (next(D4_pending) = FALSE) ) ;
+  no_effect := (  (next(D1_happened) = D1_happened) &  (next(D1_included) = D1_included) &  (next(D1_pending) = D1_pending) &  (next(D2_happened) = D2_happened) &  (next(D2_included) = D2_included) &  (next(D2_pending) = D2_pending) &  (next(D3_happened) = D3_happened) &  (next(D3_included) = D3_included) &  (next(D3_pending) = D3_pending) &  (next(D4_happened) = D4_happened) &  (next(D4_included) = D4_included) &  (next(D4_pending) = D4_pending) ) ;
+    CTLSPEC   -- deadlock-freedom
+    AG (
+    (
+    (D1_included & D1_pending) |
+    (D2_included & D2_pending) |
+    (D3_included & D3_pending) |
+    (D4_included & D4_pending) 
+    )
+    ->
+    (
+    D1_enabled |
+    D2_enabled |
+    D3_enabled |
+    D4_enabled 
+    )
+    )
+    CTLSPEC   -- absence of dead activities
+    (EF D1_enabled) & (EF D2_enabled) & (EF D3_enabled) & (EF D4_enabled) 
+    CTLSPEC   -- livelock-freedom
+    AG (
+    ( (D1_included & D1_pending) -> (EF D1_accepted) ) &
+    ( (D2_included & D2_pending) -> (EF D2_accepted) ) &
+    ( (D3_included & D3_pending) -> (EF D3_accepted) ) &
+    ( (D4_included & D4_pending) -> (EF D4_accepted) ) 
+   )
+    CTLSPEC   -- consistency
+    EX (
+    ( EF (
+    (!D1_included | !D1_pending) &
+    (!D2_included | !D2_pending) &
+    (!D3_included | !D3_pending) &
+    (!D4_included | !D4_pending) ) )
+    |
+    ( EF EG (
+    ( EF D1_accepted ) &
+    ( EF D2_accepted ) &
+    ( EF D3_accepted ) &
+    ( EF D4_accepted ) ) )
+    )
+    

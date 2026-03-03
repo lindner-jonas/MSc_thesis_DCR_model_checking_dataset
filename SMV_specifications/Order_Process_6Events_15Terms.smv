@@ -1,0 +1,123 @@
+MODULE main
+    VAR
+    Order_Product_happened : boolean;
+  Order_Product_included : boolean;
+  Order_Product_pending : boolean;
+  Receive_Shipment_happened : boolean;
+  Receive_Shipment_included : boolean;
+  Receive_Shipment_pending : boolean;
+  Approve_Order_happened : boolean;
+  Approve_Order_included : boolean;
+  Approve_Order_pending : boolean;
+  Receive_Payment_happened : boolean;
+  Receive_Payment_included : boolean;
+  Receive_Payment_pending : boolean;
+  Pay_for_Order_happened : boolean;
+  Pay_for_Order_included : boolean;
+  Pay_for_Order_pending : boolean;
+  Ship_Order_happened : boolean;
+  Ship_Order_included : boolean;
+  Ship_Order_pending : boolean;
+  
+    INIT
+    (
+  ( Order_Product_happened = FALSE ) &
+  ( Order_Product_included = TRUE ) &
+  ( Order_Product_pending = FALSE ) &
+  ( Receive_Shipment_happened = FALSE ) &
+  ( Receive_Shipment_included = FALSE ) &
+  ( Receive_Shipment_pending = FALSE ) &
+  ( Approve_Order_happened = FALSE ) &
+  ( Approve_Order_included = TRUE ) &
+  ( Approve_Order_pending = FALSE ) &
+  ( Receive_Payment_happened = FALSE ) &
+  ( Receive_Payment_included = FALSE ) &
+  ( Receive_Payment_pending = FALSE ) &
+  ( Pay_for_Order_happened = FALSE ) &
+  ( Pay_for_Order_included = FALSE ) &
+  ( Pay_for_Order_pending = FALSE ) &
+  ( Ship_Order_happened = FALSE ) &
+  ( Ship_Order_included = FALSE ) &
+  ( Ship_Order_pending = FALSE ) 
+    )
+    TRANS
+    ( 
+  ( (Order_Product_enabled) & (Order_Product_effect) ) |
+  ( (Receive_Shipment_enabled) & (Receive_Shipment_effect) ) |
+  ( (Approve_Order_enabled) & (Approve_Order_effect) ) |
+  ( (Receive_Payment_enabled) & (Receive_Payment_effect) ) |
+  ( (Pay_for_Order_enabled) & (Pay_for_Order_effect) ) |
+  ( (Ship_Order_enabled) & (Ship_Order_effect) ) |
+  ( no_enabled & no_effect )
+    )
+    DEFINE
+    Order_Product_enabled := Order_Product_included ;
+  Receive_Shipment_enabled := Receive_Shipment_included ;
+  Approve_Order_enabled := Approve_Order_included & (Order_Product_happened | !Order_Product_included) ;
+  Receive_Payment_enabled := Receive_Payment_included ;
+  Pay_for_Order_enabled := Pay_for_Order_included & (Receive_Shipment_happened | !Receive_Shipment_included) & (!Ship_Order_pending | !Ship_Order_included) ;
+  Ship_Order_enabled := Ship_Order_included & (Receive_Payment_happened | !Receive_Payment_included) & (!Pay_for_Order_pending | !Pay_for_Order_included) ;
+  no_enabled := !Order_Product_enabled & !Receive_Shipment_enabled & !Approve_Order_enabled & !Receive_Payment_enabled & !Pay_for_Order_enabled & !Ship_Order_enabled ;
+    Order_Product_accepted := ( !Order_Product_included | !Order_Product_pending | Order_Product_enabled ); 
+  Receive_Shipment_accepted := ( !Receive_Shipment_included | !Receive_Shipment_pending | Receive_Shipment_enabled ); 
+  Approve_Order_accepted := ( !Approve_Order_included | !Approve_Order_pending | Approve_Order_enabled ); 
+  Receive_Payment_accepted := ( !Receive_Payment_included | !Receive_Payment_pending | Receive_Payment_enabled ); 
+  Pay_for_Order_accepted := ( !Pay_for_Order_included | !Pay_for_Order_pending | Pay_for_Order_enabled ); 
+  Ship_Order_accepted := ( !Ship_Order_included | !Ship_Order_pending | Ship_Order_enabled ); 
+  Order_Product_effect := ( (next(Order_Product_happened) = TRUE) & (next(Order_Product_included) = FALSE) & (next(Order_Product_pending) = FALSE) & (next(Receive_Shipment_happened) = Receive_Shipment_happened) & (next(Receive_Shipment_included) = Receive_Shipment_included) & (next(Receive_Shipment_pending) = Receive_Shipment_pending) & (next(Approve_Order_happened) = Approve_Order_happened) & (next(Approve_Order_included) = Approve_Order_included) & (next(Approve_Order_pending) = Approve_Order_pending) & (next(Receive_Payment_happened) = Receive_Payment_happened) & (next(Receive_Payment_included) = Receive_Payment_included) & (next(Receive_Payment_pending) = Receive_Payment_pending) & (next(Pay_for_Order_happened) = Pay_for_Order_happened) & (next(Pay_for_Order_included) = Pay_for_Order_included) & (next(Pay_for_Order_pending) = Pay_for_Order_pending) & (next(Ship_Order_happened) = Ship_Order_happened) & (next(Ship_Order_included) = Ship_Order_included) & (next(Ship_Order_pending) = Ship_Order_pending) ) ;
+  Receive_Shipment_effect := ( (next(Order_Product_happened) = Order_Product_happened) & (next(Order_Product_included) = Order_Product_included) & (next(Order_Product_pending) = Order_Product_pending) & (next(Receive_Shipment_happened) = TRUE) & (next(Receive_Shipment_included) = Receive_Shipment_included) & (next(Receive_Shipment_pending) = FALSE) & (next(Approve_Order_happened) = Approve_Order_happened) & (next(Approve_Order_included) = Approve_Order_included) & (next(Approve_Order_pending) = Approve_Order_pending) & (next(Receive_Payment_happened) = Receive_Payment_happened) & (next(Receive_Payment_included) = Receive_Payment_included) & (next(Receive_Payment_pending) = Receive_Payment_pending) & (next(Pay_for_Order_happened) = Pay_for_Order_happened) & (next(Pay_for_Order_included) = Pay_for_Order_included) & (next(Pay_for_Order_pending) = TRUE) & (next(Ship_Order_happened) = Ship_Order_happened) & (next(Ship_Order_included) = Ship_Order_included) & (next(Ship_Order_pending) = Ship_Order_pending) ) ;
+  Approve_Order_effect := ( (next(Order_Product_happened) = Order_Product_happened) & (next(Order_Product_included) = Order_Product_included) & (next(Order_Product_pending) = Order_Product_pending) & (next(Receive_Shipment_happened) = Receive_Shipment_happened) & (next(Receive_Shipment_included) = Receive_Shipment_included) & (next(Receive_Shipment_pending) = Receive_Shipment_pending) & (next(Approve_Order_happened) = TRUE) & (next(Approve_Order_included) = FALSE) & (next(Approve_Order_pending) = FALSE) & (next(Receive_Payment_happened) = Receive_Payment_happened) & (next(Receive_Payment_included) = Receive_Payment_included) & (next(Receive_Payment_pending) = Receive_Payment_pending) & (next(Pay_for_Order_happened) = Pay_for_Order_happened) & (next(Pay_for_Order_included) = TRUE) & (next(Pay_for_Order_pending) = TRUE) & (next(Ship_Order_happened) = Ship_Order_happened) & (next(Ship_Order_included) = TRUE) & (next(Ship_Order_pending) = TRUE) ) ;
+  Receive_Payment_effect := ( (next(Order_Product_happened) = Order_Product_happened) & (next(Order_Product_included) = Order_Product_included) & (next(Order_Product_pending) = Order_Product_pending) & (next(Receive_Shipment_happened) = Receive_Shipment_happened) & (next(Receive_Shipment_included) = Receive_Shipment_included) & (next(Receive_Shipment_pending) = Receive_Shipment_pending) & (next(Approve_Order_happened) = Approve_Order_happened) & (next(Approve_Order_included) = Approve_Order_included) & (next(Approve_Order_pending) = Approve_Order_pending) & (next(Receive_Payment_happened) = TRUE) & (next(Receive_Payment_included) = Receive_Payment_included) & (next(Receive_Payment_pending) = FALSE) & (next(Pay_for_Order_happened) = Pay_for_Order_happened) & (next(Pay_for_Order_included) = Pay_for_Order_included) & (next(Pay_for_Order_pending) = Pay_for_Order_pending) & (next(Ship_Order_happened) = Ship_Order_happened) & (next(Ship_Order_included) = Ship_Order_included) & (next(Ship_Order_pending) = TRUE) ) ;
+  Pay_for_Order_effect := ( (next(Order_Product_happened) = Order_Product_happened) & (next(Order_Product_included) = Order_Product_included) & (next(Order_Product_pending) = Order_Product_pending) & (next(Receive_Shipment_happened) = Receive_Shipment_happened) & (next(Receive_Shipment_included) = Receive_Shipment_included) & (next(Receive_Shipment_pending) = Receive_Shipment_pending) & (next(Approve_Order_happened) = Approve_Order_happened) & (next(Approve_Order_included) = Approve_Order_included) & (next(Approve_Order_pending) = Approve_Order_pending) & (next(Receive_Payment_happened) = Receive_Payment_happened) & (next(Receive_Payment_included) = TRUE) & (next(Receive_Payment_pending) = Receive_Payment_pending) & (next(Pay_for_Order_happened) = TRUE) & (next(Pay_for_Order_included) = Pay_for_Order_included) & (next(Pay_for_Order_pending) = FALSE) & (next(Ship_Order_happened) = Ship_Order_happened) & (next(Ship_Order_included) = Ship_Order_included) & (next(Ship_Order_pending) = Ship_Order_pending) ) ;
+  Ship_Order_effect := ( (next(Order_Product_happened) = Order_Product_happened) & (next(Order_Product_included) = Order_Product_included) & (next(Order_Product_pending) = Order_Product_pending) & (next(Receive_Shipment_happened) = Receive_Shipment_happened) & (next(Receive_Shipment_included) = TRUE) & (next(Receive_Shipment_pending) = Receive_Shipment_pending) & (next(Approve_Order_happened) = Approve_Order_happened) & (next(Approve_Order_included) = Approve_Order_included) & (next(Approve_Order_pending) = Approve_Order_pending) & (next(Receive_Payment_happened) = Receive_Payment_happened) & (next(Receive_Payment_included) = Receive_Payment_included) & (next(Receive_Payment_pending) = Receive_Payment_pending) & (next(Pay_for_Order_happened) = Pay_for_Order_happened) & (next(Pay_for_Order_included) = Pay_for_Order_included) & (next(Pay_for_Order_pending) = Pay_for_Order_pending) & (next(Ship_Order_happened) = TRUE) & (next(Ship_Order_included) = Ship_Order_included) & (next(Ship_Order_pending) = FALSE) ) ;
+  no_effect := (  (next(Order_Product_happened) = Order_Product_happened) &  (next(Order_Product_included) = Order_Product_included) &  (next(Order_Product_pending) = Order_Product_pending) &  (next(Receive_Shipment_happened) = Receive_Shipment_happened) &  (next(Receive_Shipment_included) = Receive_Shipment_included) &  (next(Receive_Shipment_pending) = Receive_Shipment_pending) &  (next(Approve_Order_happened) = Approve_Order_happened) &  (next(Approve_Order_included) = Approve_Order_included) &  (next(Approve_Order_pending) = Approve_Order_pending) &  (next(Receive_Payment_happened) = Receive_Payment_happened) &  (next(Receive_Payment_included) = Receive_Payment_included) &  (next(Receive_Payment_pending) = Receive_Payment_pending) &  (next(Pay_for_Order_happened) = Pay_for_Order_happened) &  (next(Pay_for_Order_included) = Pay_for_Order_included) &  (next(Pay_for_Order_pending) = Pay_for_Order_pending) &  (next(Ship_Order_happened) = Ship_Order_happened) &  (next(Ship_Order_included) = Ship_Order_included) &  (next(Ship_Order_pending) = Ship_Order_pending) ) ;
+    CTLSPEC   -- deadlock-freedom
+    AG (
+    (
+    (Order_Product_included & Order_Product_pending) |
+    (Receive_Shipment_included & Receive_Shipment_pending) |
+    (Approve_Order_included & Approve_Order_pending) |
+    (Receive_Payment_included & Receive_Payment_pending) |
+    (Pay_for_Order_included & Pay_for_Order_pending) |
+    (Ship_Order_included & Ship_Order_pending) 
+    )
+    ->
+    (
+    Order_Product_enabled |
+    Receive_Shipment_enabled |
+    Approve_Order_enabled |
+    Receive_Payment_enabled |
+    Pay_for_Order_enabled |
+    Ship_Order_enabled 
+    )
+    )
+    CTLSPEC   -- absence of dead activities
+    (EF Order_Product_enabled) & (EF Receive_Shipment_enabled) & (EF Approve_Order_enabled) & (EF Receive_Payment_enabled) & (EF Pay_for_Order_enabled) & (EF Ship_Order_enabled) 
+    CTLSPEC   -- livelock-freedom
+    AG (
+    ( (Order_Product_included & Order_Product_pending) -> (EF Order_Product_accepted) ) &
+    ( (Receive_Shipment_included & Receive_Shipment_pending) -> (EF Receive_Shipment_accepted) ) &
+    ( (Approve_Order_included & Approve_Order_pending) -> (EF Approve_Order_accepted) ) &
+    ( (Receive_Payment_included & Receive_Payment_pending) -> (EF Receive_Payment_accepted) ) &
+    ( (Pay_for_Order_included & Pay_for_Order_pending) -> (EF Pay_for_Order_accepted) ) &
+    ( (Ship_Order_included & Ship_Order_pending) -> (EF Ship_Order_accepted) ) 
+   )
+    CTLSPEC   -- consistency
+    EX (
+    ( EF (
+    (!Order_Product_included | !Order_Product_pending) &
+    (!Receive_Shipment_included | !Receive_Shipment_pending) &
+    (!Approve_Order_included | !Approve_Order_pending) &
+    (!Receive_Payment_included | !Receive_Payment_pending) &
+    (!Pay_for_Order_included | !Pay_for_Order_pending) &
+    (!Ship_Order_included | !Ship_Order_pending) ) )
+    |
+    ( EF EG (
+    ( EF Order_Product_accepted ) &
+    ( EF Receive_Shipment_accepted ) &
+    ( EF Approve_Order_accepted ) &
+    ( EF Receive_Payment_accepted ) &
+    ( EF Pay_for_Order_accepted ) &
+    ( EF Ship_Order_accepted ) ) )
+    )
+    

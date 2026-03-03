@@ -1,0 +1,177 @@
+Script started on 2026-02-25 23:50:39+01:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="92" LINES="65"]
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\nuXmv -int Unsound_Model_4Events_4Terms.smv 
+[?2004l]133;C\]666;vte.shell.preexec!\*** This is nuXmv 2.1.0 (compiled on Fri Nov 29 13:41:31 2024)
+*** Copyright (c) 2014-2024, Fondazione Bruno Kessler
+*** For more information on nuXmv see https://nuxmv.fbk.eu
+*** or email to <nuxmv@fbk.eu>.
+*** Please report bugs at Please report bugs to <nusmv-users@fbk.eu>
+*** (click on "Login Anonymously" to access)
+*** Alternatively write to <nuxmv@fbk.eu>.
+
+*** This version of nuXmv is linked to NuSMV 2.7.0.
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@fbk.eu>.
+*** Copyright (C) 2010-2024, Fondazione Bruno Kessler
+
+*** This version of nuXmv is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of nuXmv is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+*** This version of nuXmv is linked to MathSAT
+*** Copyright (C) 2009-2019 by Fondazione Bruno Kessler
+*** Copyright (C) 2009-2019 by University of Trento and others
+*** See http://mathsat.fbk.eu
+
+nuXmv > rea[12Gd_m[15Godel 
+nuXmv > fla[12Gtten_hierarchy 
+nuXmv > enc[12Gode_variables 
+nuXmv > bu[11Gild_m
+unknown command 'build_m'
+nuXmv > [9Gbuild_m[16Godel 
+nuXmv > che[12Gck_ct[17Glspec 
+-- specification AG (((((A_included & A_pending) | (B_included & B_pending)) | (D_included & D_pending)) | (C_included & C_pending)) -> (((A_enabled | B_enabled) | D_enabled) | C_enabled))  is false
+-- as demonstrated by the following execution sequence
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 1.1 <-
+    A_happened = FALSE
+    A_included = TRUE
+    A_pending = TRUE
+    B_happened = FALSE
+    B_included = TRUE
+    B_pending = FALSE
+    D_happened = FALSE
+    D_included = TRUE
+    D_pending = FALSE
+    C_happened = FALSE
+    C_included = TRUE
+    C_pending = TRUE
+    C_accepted = FALSE
+    D_accepted = TRUE
+    B_accepted = TRUE
+    A_accepted = FALSE
+    no_enabled = TRUE
+    C_enabled = FALSE
+    D_enabled = FALSE
+    B_enabled = FALSE
+    A_enabled = FALSE
+-- specification (((EF A_enabled & EF B_enabled) & EF D_enabled) & EF C_enabled)  is false
+-- as demonstrated by the following execution sequence
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 2.1 <-
+    A_happened = FALSE
+    A_included = TRUE
+    A_pending = TRUE
+    B_happened = FALSE
+    B_included = TRUE
+    B_pending = FALSE
+    D_happened = FALSE
+    D_included = TRUE
+    D_pending = FALSE
+    C_happened = FALSE
+    C_included = TRUE
+    C_pending = TRUE
+    C_accepted = FALSE
+    D_accepted = TRUE
+    B_accepted = TRUE
+    A_accepted = FALSE
+    no_enabled = TRUE
+    C_enabled = FALSE
+    D_enabled = FALSE
+    B_enabled = FALSE
+    A_enabled = FALSE
+-- specification AG (((((A_included & A_pending) -> EF A_accepted) & ((B_included & B_pending) -> EF B_accepted)) & ((D_included & D_pending) -> EF D_accepted)) & ((C_included & C_pending) -> EF C_accepted))  is false
+-- as demonstrated by the following execution sequence
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 3.1 <-
+    A_happened = FALSE
+    A_included = TRUE
+    A_pending = TRUE
+    B_happened = FALSE
+    B_included = TRUE
+    B_pending = FALSE
+    D_happened = FALSE
+    D_included = TRUE
+    D_pending = FALSE
+    C_happened = FALSE
+    C_included = TRUE
+    C_pending = TRUE
+    C_accepted = FALSE
+    D_accepted = TRUE
+    B_accepted = TRUE
+    A_accepted = FALSE
+    no_enabled = TRUE
+    C_enabled = FALSE
+    D_enabled = FALSE
+    B_enabled = FALSE
+    A_enabled = FALSE
+-- specification EX (EF ((((!A_included | !A_pending) & (!B_included | !B_pending)) & (!D_included | !D_pending)) & (!C_included | !C_pending)) | EF (EG (((EF A_accepted & EF B_accepted) & EF D_accepted) & EF C_accepted)))  is false
+-- as demonstrated by the following execution sequence
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 4.1 <-
+    A_happened = FALSE
+    A_included = TRUE
+    A_pending = TRUE
+    B_happened = FALSE
+    B_included = TRUE
+    B_pending = FALSE
+    D_happened = FALSE
+    D_included = TRUE
+    D_pending = FALSE
+    C_happened = FALSE
+    C_included = TRUE
+    C_pending = TRUE
+    C_accepted = FALSE
+    D_accepted = TRUE
+    B_accepted = TRUE
+    A_accepted = FALSE
+    no_enabled = TRUE
+    C_enabled = FALSE
+    D_enabled = FALSE
+    B_enabled = FALSE
+    A_enabled = FALSE
+nuXmv > pri[12Gnt_re[17Gachable_states -v -d
+######################################################################
+system diameter: 1
+reachable states: 1 (2^0) out of 4096 (2^12)
+  ------- State    1 ------
+  no_effect = FALSE
+  C_effect = FALSE
+  D_effect = FALSE
+  B_effect = FALSE
+  A_effect = FALSE
+  C_accepted = FALSE
+  D_accepted = TRUE
+  B_accepted = TRUE
+  A_accepted = FALSE
+  no_enabled = TRUE
+  C_enabled = FALSE
+  D_enabled = FALSE
+  B_enabled = FALSE
+  A_enabled = FALSE
+  A_happened = FALSE
+  A_included = TRUE
+  A_pending = TRUE
+  B_happened = FALSE
+  B_included = TRUE
+  B_pending = FALSE
+  D_happened = FALSE
+  D_included = TRUE
+  D_pending = FALSE
+  C_happened = FALSE
+  C_included = TRUE
+  C_pending = TRUE
+  -------------------------
+######################################################################
+nuXmv > quit
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-02-25 23:51:18+01:00 [COMMAND_EXIT_CODE="0"]

@@ -1,0 +1,93 @@
+MODULE main
+    VAR
+    Consult_Employees_salary_agreement_happened : boolean;
+  Consult_Employees_salary_agreement_included : boolean;
+  Consult_Employees_salary_agreement_pending : boolean;
+  Report_Additional_Income_Sources_happened : boolean;
+  Report_Additional_Income_Sources_included : boolean;
+  Report_Additional_Income_Sources_pending : boolean;
+  Perform_tax_calculation_for_employee_happened : boolean;
+  Perform_tax_calculation_for_employee_included : boolean;
+  Perform_tax_calculation_for_employee_pending : boolean;
+  Pay_salary_happened : boolean;
+  Pay_salary_included : boolean;
+  Pay_salary_pending : boolean;
+  
+    INIT
+    (
+  ( Consult_Employees_salary_agreement_happened = FALSE ) &
+  ( Consult_Employees_salary_agreement_included = TRUE ) &
+  ( Consult_Employees_salary_agreement_pending = FALSE ) &
+  ( Report_Additional_Income_Sources_happened = FALSE ) &
+  ( Report_Additional_Income_Sources_included = TRUE ) &
+  ( Report_Additional_Income_Sources_pending = FALSE ) &
+  ( Perform_tax_calculation_for_employee_happened = FALSE ) &
+  ( Perform_tax_calculation_for_employee_included = TRUE ) &
+  ( Perform_tax_calculation_for_employee_pending = FALSE ) &
+  ( Pay_salary_happened = FALSE ) &
+  ( Pay_salary_included = TRUE ) &
+  ( Pay_salary_pending = FALSE ) 
+    )
+    TRANS
+    ( 
+  ( (Consult_Employees_salary_agreement_enabled) & (Consult_Employees_salary_agreement_effect) ) |
+  ( (Report_Additional_Income_Sources_enabled) & (Report_Additional_Income_Sources_effect) ) |
+  ( (Perform_tax_calculation_for_employee_enabled) & (Perform_tax_calculation_for_employee_effect) ) |
+  ( (Pay_salary_enabled) & (Pay_salary_effect) ) |
+  ( no_enabled & no_effect )
+    )
+    DEFINE
+    Consult_Employees_salary_agreement_enabled := Consult_Employees_salary_agreement_included ;
+  Report_Additional_Income_Sources_enabled := Report_Additional_Income_Sources_included ;
+  Perform_tax_calculation_for_employee_enabled := Perform_tax_calculation_for_employee_included & (Consult_Employees_salary_agreement_happened | !Consult_Employees_salary_agreement_included) ;
+  Pay_salary_enabled := Pay_salary_included & (Consult_Employees_salary_agreement_happened | !Consult_Employees_salary_agreement_included) & (!Perform_tax_calculation_for_employee_pending | !Perform_tax_calculation_for_employee_included) ;
+  no_enabled := !Consult_Employees_salary_agreement_enabled & !Report_Additional_Income_Sources_enabled & !Perform_tax_calculation_for_employee_enabled & !Pay_salary_enabled ;
+    Consult_Employees_salary_agreement_accepted := ( !Consult_Employees_salary_agreement_included | !Consult_Employees_salary_agreement_pending | Consult_Employees_salary_agreement_enabled ); 
+  Report_Additional_Income_Sources_accepted := ( !Report_Additional_Income_Sources_included | !Report_Additional_Income_Sources_pending | Report_Additional_Income_Sources_enabled ); 
+  Perform_tax_calculation_for_employee_accepted := ( !Perform_tax_calculation_for_employee_included | !Perform_tax_calculation_for_employee_pending | Perform_tax_calculation_for_employee_enabled ); 
+  Pay_salary_accepted := ( !Pay_salary_included | !Pay_salary_pending | Pay_salary_enabled ); 
+  Consult_Employees_salary_agreement_effect := ( (next(Consult_Employees_salary_agreement_happened) = TRUE) & (next(Consult_Employees_salary_agreement_included) = Consult_Employees_salary_agreement_included) & (next(Consult_Employees_salary_agreement_pending) = FALSE) & (next(Report_Additional_Income_Sources_happened) = Report_Additional_Income_Sources_happened) & (next(Report_Additional_Income_Sources_included) = Report_Additional_Income_Sources_included) & (next(Report_Additional_Income_Sources_pending) = Report_Additional_Income_Sources_pending) & (next(Perform_tax_calculation_for_employee_happened) = Perform_tax_calculation_for_employee_happened) & (next(Perform_tax_calculation_for_employee_included) = Perform_tax_calculation_for_employee_included) & (next(Perform_tax_calculation_for_employee_pending) = TRUE) & (next(Pay_salary_happened) = Pay_salary_happened) & (next(Pay_salary_included) = Pay_salary_included) & (next(Pay_salary_pending) = TRUE) ) ;
+  Report_Additional_Income_Sources_effect := ( (next(Consult_Employees_salary_agreement_happened) = Consult_Employees_salary_agreement_happened) & (next(Consult_Employees_salary_agreement_included) = Consult_Employees_salary_agreement_included) & (next(Consult_Employees_salary_agreement_pending) = Consult_Employees_salary_agreement_pending) & (next(Report_Additional_Income_Sources_happened) = TRUE) & (next(Report_Additional_Income_Sources_included) = Report_Additional_Income_Sources_included) & (next(Report_Additional_Income_Sources_pending) = FALSE) & (next(Perform_tax_calculation_for_employee_happened) = Perform_tax_calculation_for_employee_happened) & (next(Perform_tax_calculation_for_employee_included) = Perform_tax_calculation_for_employee_included) & (next(Perform_tax_calculation_for_employee_pending) = TRUE) & (next(Pay_salary_happened) = Pay_salary_happened) & (next(Pay_salary_included) = Pay_salary_included) & (next(Pay_salary_pending) = Pay_salary_pending) ) ;
+  Perform_tax_calculation_for_employee_effect := ( (next(Consult_Employees_salary_agreement_happened) = Consult_Employees_salary_agreement_happened) & (next(Consult_Employees_salary_agreement_included) = Consult_Employees_salary_agreement_included) & (next(Consult_Employees_salary_agreement_pending) = Consult_Employees_salary_agreement_pending) & (next(Report_Additional_Income_Sources_happened) = Report_Additional_Income_Sources_happened) & (next(Report_Additional_Income_Sources_included) = Report_Additional_Income_Sources_included) & (next(Report_Additional_Income_Sources_pending) = Report_Additional_Income_Sources_pending) & (next(Perform_tax_calculation_for_employee_happened) = TRUE) & (next(Perform_tax_calculation_for_employee_included) = Perform_tax_calculation_for_employee_included) & (next(Perform_tax_calculation_for_employee_pending) = FALSE) & (next(Pay_salary_happened) = Pay_salary_happened) & (next(Pay_salary_included) = Pay_salary_included) & (next(Pay_salary_pending) = Pay_salary_pending) ) ;
+  Pay_salary_effect := ( (next(Consult_Employees_salary_agreement_happened) = Consult_Employees_salary_agreement_happened) & (next(Consult_Employees_salary_agreement_included) = Consult_Employees_salary_agreement_included) & (next(Consult_Employees_salary_agreement_pending) = Consult_Employees_salary_agreement_pending) & (next(Report_Additional_Income_Sources_happened) = Report_Additional_Income_Sources_happened) & (next(Report_Additional_Income_Sources_included) = Report_Additional_Income_Sources_included) & (next(Report_Additional_Income_Sources_pending) = Report_Additional_Income_Sources_pending) & (next(Perform_tax_calculation_for_employee_happened) = Perform_tax_calculation_for_employee_happened) & (next(Perform_tax_calculation_for_employee_included) = Perform_tax_calculation_for_employee_included) & (next(Perform_tax_calculation_for_employee_pending) = Perform_tax_calculation_for_employee_pending) & (next(Pay_salary_happened) = TRUE) & (next(Pay_salary_included) = Pay_salary_included) & (next(Pay_salary_pending) = FALSE) ) ;
+  no_effect := (  (next(Consult_Employees_salary_agreement_happened) = Consult_Employees_salary_agreement_happened) &  (next(Consult_Employees_salary_agreement_included) = Consult_Employees_salary_agreement_included) &  (next(Consult_Employees_salary_agreement_pending) = Consult_Employees_salary_agreement_pending) &  (next(Report_Additional_Income_Sources_happened) = Report_Additional_Income_Sources_happened) &  (next(Report_Additional_Income_Sources_included) = Report_Additional_Income_Sources_included) &  (next(Report_Additional_Income_Sources_pending) = Report_Additional_Income_Sources_pending) &  (next(Perform_tax_calculation_for_employee_happened) = Perform_tax_calculation_for_employee_happened) &  (next(Perform_tax_calculation_for_employee_included) = Perform_tax_calculation_for_employee_included) &  (next(Perform_tax_calculation_for_employee_pending) = Perform_tax_calculation_for_employee_pending) &  (next(Pay_salary_happened) = Pay_salary_happened) &  (next(Pay_salary_included) = Pay_salary_included) &  (next(Pay_salary_pending) = Pay_salary_pending) ) ;
+    CTLSPEC   -- deadlock-freedom
+    AG (
+    (
+    (Consult_Employees_salary_agreement_included & Consult_Employees_salary_agreement_pending) |
+    (Report_Additional_Income_Sources_included & Report_Additional_Income_Sources_pending) |
+    (Perform_tax_calculation_for_employee_included & Perform_tax_calculation_for_employee_pending) |
+    (Pay_salary_included & Pay_salary_pending) 
+    )
+    ->
+    (
+    Consult_Employees_salary_agreement_enabled |
+    Report_Additional_Income_Sources_enabled |
+    Perform_tax_calculation_for_employee_enabled |
+    Pay_salary_enabled 
+    )
+    )
+    CTLSPEC   -- absence of dead activities
+    (EF Consult_Employees_salary_agreement_enabled) & (EF Report_Additional_Income_Sources_enabled) & (EF Perform_tax_calculation_for_employee_enabled) & (EF Pay_salary_enabled) 
+    CTLSPEC   -- livelock-freedom
+    AG (
+    ( (Consult_Employees_salary_agreement_included & Consult_Employees_salary_agreement_pending) -> (EF Consult_Employees_salary_agreement_accepted) ) &
+    ( (Report_Additional_Income_Sources_included & Report_Additional_Income_Sources_pending) -> (EF Report_Additional_Income_Sources_accepted) ) &
+    ( (Perform_tax_calculation_for_employee_included & Perform_tax_calculation_for_employee_pending) -> (EF Perform_tax_calculation_for_employee_accepted) ) &
+    ( (Pay_salary_included & Pay_salary_pending) -> (EF Pay_salary_accepted) ) 
+   )
+    CTLSPEC   -- consistency
+    EX (
+    ( EF (
+    (!Consult_Employees_salary_agreement_included | !Consult_Employees_salary_agreement_pending) &
+    (!Report_Additional_Income_Sources_included | !Report_Additional_Income_Sources_pending) &
+    (!Perform_tax_calculation_for_employee_included | !Perform_tax_calculation_for_employee_pending) &
+    (!Pay_salary_included | !Pay_salary_pending) ) )
+    |
+    ( EF EG (
+    ( EF Consult_Employees_salary_agreement_accepted ) &
+    ( EF Report_Additional_Income_Sources_accepted ) &
+    ( EF Perform_tax_calculation_for_employee_accepted ) &
+    ( EF Pay_salary_accepted ) ) )
+    )
+    

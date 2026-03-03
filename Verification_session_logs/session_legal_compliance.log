@@ -1,0 +1,913 @@
+Script started on 2026-02-25 21:56:13+01:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="92" LINES="65"]
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exitnuXmv -int Hiring_Process_Min_Edu_15Events_49Terms.smv [A(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exit[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CnuXmv -int Hiring_Process_Min_Edu_15Events_49Terms.smv [K[K[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[KLegal_Compliance_by_Design_6Events_9Terms.smv 
+[?2004l]133;C\]666;vte.shell.preexec!\*** This is nuXmv 2.1.0 (compiled on Fri Nov 29 13:41:31 2024)
+*** Copyright (c) 2014-2024, Fondazione Bruno Kessler
+*** For more information on nuXmv see https://nuxmv.fbk.eu
+*** or email to <nuxmv@fbk.eu>.
+*** Please report bugs at Please report bugs to <nusmv-users@fbk.eu>
+*** (click on "Login Anonymously" to access)
+*** Alternatively write to <nuxmv@fbk.eu>.
+
+*** This version of nuXmv is linked to NuSMV 2.7.0.
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@fbk.eu>.
+*** Copyright (C) 2010-2024, Fondazione Bruno Kessler
+
+*** This version of nuXmv is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of nuXmv is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+*** This version of nuXmv is linked to MathSAT
+*** Copyright (C) 2009-2019 by Fondazione Bruno Kessler
+*** Copyright (C) 2009-2019 by University of Trento and others
+*** See http://mathsat.fbk.eu
+
+nuXmv > re[11GA[11G[KA[11G[K[11GA[11G[Ka[12Gd_m[15Godel 
+nuXmv > fla[12Gtten_hierarchy 
+nuXmv > enc[12Gode_variables 
+nuXmv > bui[12Gld_m[16Godel 
+nuXmv > chec[13Gk_ct[17Glspec 
+-- specification AG (((((((Has_reached_pension_age_included & Has_reached_pension_age_pending) | (Grant_public_pension_included & Grant_public_pension_pending)) | (Has_lived_in_Denmark_for_the_last_8_years_included & Has_lived_in_Denmark_for_the_last_8_years_pending)) | (Has_danish_citizenship_included & Has_danish_citizenship_pending)) | (Lives_in_Denmark_included & Lives_in_Denmark_pending)) | (Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included & Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending)) -> (((((Has_reached_pension_age_enabled | Grant_public_pension_enabled) | Has_lived_in_Denmark_for_the_last_8_years_enabled) | Has_danish_citizenship_enabled) | Lives_in_Denmark_enabled) | Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled))  is true
+-- specification (((((EF Has_reached_pension_age_enabled & EF Grant_public_pension_enabled) & EF Has_lived_in_Denmark_for_the_last_8_years_enabled) & EF Has_danish_citizenship_enabled) & EF Lives_in_Denmark_enabled) & EF Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled)  is true
+-- specification AG (((((((Has_reached_pension_age_included & Has_reached_pension_age_pending) -> EF Has_reached_pension_age_accepted) & ((Grant_public_pension_included & Grant_public_pension_pending) -> EF Grant_public_pension_accepted)) & ((Has_lived_in_Denmark_for_the_last_8_years_included & Has_lived_in_Denmark_for_the_last_8_years_pending) -> EF Has_lived_in_Denmark_for_the_last_8_years_accepted)) & ((Has_danish_citizenship_included & Has_danish_citizenship_pending) -> EF Has_danish_citizenship_accepted)) & ((Lives_in_Denmark_included & Lives_in_Denmark_pending) -> EF Lives_in_Denmark_accepted)) & ((Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included & Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending) -> EF Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted))  is true
+-- specification EX (EF ((((((!Has_reached_pension_age_included | !Has_reached_pension_age_pending) & (!Grant_public_pension_included | !Grant_public_pension_pending)) & (!Has_lived_in_Denmark_for_the_last_8_years_included | !Has_lived_in_Denmark_for_the_last_8_years_pending)) & (!Has_danish_citizenship_included | !Has_danish_citizenship_pending)) & (!Lives_in_Denmark_included | !Lives_in_Denmark_pending)) & (!Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included | !Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending)) | EF (EG (((((EF Has_reached_pension_age_accepted & EF Grant_public_pension_accepted) & EF Has_lived_in_Denmark_for_the_last_8_years_accepted) & EF Has_danish_citizenship_accepted) & EF Lives_in_Denmark_accepted) & EF Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted)))  is true
+nuXmv > pri[12Gnt_re[17Gachable_states 
+######################################################################
+system diameter: 7
+reachable states: 22 (2^4.45943) out of 262144 (2^18)
+######################################################################
+nuXmv > [9Gprint_reachable_states -v -d
+######################################################################
+system diameter: 7
+reachable states: 22 (2^4.45943) out of 262144 (2^18)
+  ------- State    1 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = FALSE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = FALSE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State    2 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = FALSE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = FALSE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = FALSE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State    3 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = FALSE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = FALSE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State    4 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = FALSE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = FALSE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = FALSE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State    5 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = FALSE
+  Grant_public_pension_enabled = TRUE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State    6 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = FALSE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = FALSE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State    7 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State    8 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = FALSE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State    9 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   10 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = FALSE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   11 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = FALSE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = TRUE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   12 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = FALSE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = FALSE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   13 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = FALSE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = TRUE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   14 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = FALSE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = FALSE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = FALSE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   15 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = FALSE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = TRUE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   16 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = FALSE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = TRUE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   17 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = FALSE
+  Grant_public_pension_enabled = TRUE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = TRUE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   18 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = TRUE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = FALSE
+  Grant_public_pension_enabled = TRUE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = TRUE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_included = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   19 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = FALSE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = TRUE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = TRUE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   20 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = FALSE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = TRUE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = TRUE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = TRUE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   21 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = FALSE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = TRUE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = TRUE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  ------- State   22 ------
+  no_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_effect = FALSE
+  Lives_in_Denmark_effect = FALSE
+  Has_danish_citizenship_effect = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_effect = FALSE
+  Grant_public_pension_effect = FALSE
+  Has_reached_pension_age_effect = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_accepted = TRUE
+  Lives_in_Denmark_accepted = TRUE
+  Has_danish_citizenship_accepted = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_accepted = TRUE
+  Grant_public_pension_accepted = TRUE
+  Has_reached_pension_age_accepted = TRUE
+  no_enabled = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_enabled = FALSE
+  Lives_in_Denmark_enabled = TRUE
+  Has_danish_citizenship_enabled = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_enabled = TRUE
+  Grant_public_pension_enabled = TRUE
+  Has_reached_pension_age_enabled = TRUE
+  Has_reached_pension_age_happened = TRUE
+  Has_reached_pension_age_included = TRUE
+  Has_reached_pension_age_pending = FALSE
+  Grant_public_pension_happened = TRUE
+  Grant_public_pension_included = TRUE
+  Grant_public_pension_pending = FALSE
+  Has_lived_in_Denmark_for_the_last_8_years_happened = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_included = TRUE
+  Has_lived_in_Denmark_for_the_last_8_years_pending = FALSE
+  Has_danish_citizenship_happened = TRUE
+  Has_danish_citizenship_included = TRUE
+  Has_danish_citizenship_pending = FALSE
+  Lives_in_Denmark_happened = TRUE
+  Lives_in_Denmark_included = TRUE
+  Lives_in_Denmark_pending = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_happened = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_included = FALSE
+  Has_lived_in_Denmark_for_at_least_three_years_between_15_and_pension_age_pending = FALSE
+  -------------------------
+######################################################################
+nuXmv > e[9G[Kquot[12G[K[11G[Kit
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-02-25 21:58:07+01:00 [COMMAND_EXIT_CODE="0"]

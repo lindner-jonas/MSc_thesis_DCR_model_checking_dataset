@@ -1,0 +1,93 @@
+MODULE main
+    VAR
+    Prescribe_medicine_happened : boolean;
+  Prescribe_medicine_included : boolean;
+  Prescribe_medicine_pending : boolean;
+  Sign_happened : boolean;
+  Sign_included : boolean;
+  Sign_pending : boolean;
+  Give_medicine_happened : boolean;
+  Give_medicine_included : boolean;
+  Give_medicine_pending : boolean;
+  Dont_trust_happened : boolean;
+  Dont_trust_included : boolean;
+  Dont_trust_pending : boolean;
+  
+    INIT
+    (
+  ( Prescribe_medicine_happened = FALSE ) &
+  ( Prescribe_medicine_included = TRUE ) &
+  ( Prescribe_medicine_pending = FALSE ) &
+  ( Sign_happened = FALSE ) &
+  ( Sign_included = TRUE ) &
+  ( Sign_pending = FALSE ) &
+  ( Give_medicine_happened = FALSE ) &
+  ( Give_medicine_included = TRUE ) &
+  ( Give_medicine_pending = FALSE ) &
+  ( Dont_trust_happened = FALSE ) &
+  ( Dont_trust_included = TRUE ) &
+  ( Dont_trust_pending = FALSE ) 
+    )
+    TRANS
+    ( 
+  ( (Prescribe_medicine_enabled) & (Prescribe_medicine_effect) ) |
+  ( (Sign_enabled) & (Sign_effect) ) |
+  ( (Give_medicine_enabled) & (Give_medicine_effect) ) |
+  ( (Dont_trust_enabled) & (Dont_trust_effect) ) |
+  ( no_enabled & no_effect )
+    )
+    DEFINE
+    Prescribe_medicine_enabled := Prescribe_medicine_included ;
+  Sign_enabled := Sign_included & (Prescribe_medicine_happened | !Prescribe_medicine_included) ;
+  Give_medicine_enabled := Give_medicine_included & (Sign_happened | !Sign_included) & (Prescribe_medicine_happened | !Prescribe_medicine_included) ;
+  Dont_trust_enabled := Dont_trust_included & (Sign_happened | !Sign_included) ;
+  no_enabled := !Prescribe_medicine_enabled & !Sign_enabled & !Give_medicine_enabled & !Dont_trust_enabled ;
+    Prescribe_medicine_accepted := ( !Prescribe_medicine_included | !Prescribe_medicine_pending | Prescribe_medicine_enabled ); 
+  Sign_accepted := ( !Sign_included | !Sign_pending | Sign_enabled ); 
+  Give_medicine_accepted := ( !Give_medicine_included | !Give_medicine_pending | Give_medicine_enabled ); 
+  Dont_trust_accepted := ( !Dont_trust_included | !Dont_trust_pending | Dont_trust_enabled ); 
+  Prescribe_medicine_effect := ( (next(Prescribe_medicine_happened) = TRUE) & (next(Prescribe_medicine_included) = FALSE) & (next(Prescribe_medicine_pending) = FALSE) & (next(Sign_happened) = Sign_happened) & (next(Sign_included) = Sign_included) & (next(Sign_pending) = Sign_pending) & (next(Give_medicine_happened) = Give_medicine_happened) & (next(Give_medicine_included) = Give_medicine_included) & (next(Give_medicine_pending) = TRUE) & (next(Dont_trust_happened) = Dont_trust_happened) & (next(Dont_trust_included) = Dont_trust_included) & (next(Dont_trust_pending) = Dont_trust_pending) ) ;
+  Sign_effect := ( (next(Prescribe_medicine_happened) = Prescribe_medicine_happened) & (next(Prescribe_medicine_included) = Prescribe_medicine_included) & (next(Prescribe_medicine_pending) = Prescribe_medicine_pending) & (next(Sign_happened) = TRUE) & (next(Sign_included) = Sign_included) & (next(Sign_pending) = FALSE) & (next(Give_medicine_happened) = Give_medicine_happened) & (next(Give_medicine_included) = TRUE) & (next(Give_medicine_pending) = Give_medicine_pending) & (next(Dont_trust_happened) = Dont_trust_happened) & (next(Dont_trust_included) = TRUE) & (next(Dont_trust_pending) = Dont_trust_pending) ) ;
+  Give_medicine_effect := ( (next(Prescribe_medicine_happened) = Prescribe_medicine_happened) & (next(Prescribe_medicine_included) = Prescribe_medicine_included) & (next(Prescribe_medicine_pending) = Prescribe_medicine_pending) & (next(Sign_happened) = Sign_happened) & (next(Sign_included) = Sign_included) & (next(Sign_pending) = Sign_pending) & (next(Give_medicine_happened) = TRUE) & (next(Give_medicine_included) = Give_medicine_included) & (next(Give_medicine_pending) = FALSE) & (next(Dont_trust_happened) = Dont_trust_happened) & (next(Dont_trust_included) = FALSE) & (next(Dont_trust_pending) = Dont_trust_pending) ) ;
+  Dont_trust_effect := ( (next(Prescribe_medicine_happened) = Prescribe_medicine_happened) & (next(Prescribe_medicine_included) = Prescribe_medicine_included) & (next(Prescribe_medicine_pending) = Prescribe_medicine_pending) & (next(Sign_happened) = Sign_happened) & (next(Sign_included) = Sign_included) & (next(Sign_pending) = TRUE) & (next(Give_medicine_happened) = Give_medicine_happened) & (next(Give_medicine_included) = FALSE) & (next(Give_medicine_pending) = Give_medicine_pending) & (next(Dont_trust_happened) = TRUE) & (next(Dont_trust_included) = Dont_trust_included) & (next(Dont_trust_pending) = FALSE) ) ;
+  no_effect := (  (next(Prescribe_medicine_happened) = Prescribe_medicine_happened) &  (next(Prescribe_medicine_included) = Prescribe_medicine_included) &  (next(Prescribe_medicine_pending) = Prescribe_medicine_pending) &  (next(Sign_happened) = Sign_happened) &  (next(Sign_included) = Sign_included) &  (next(Sign_pending) = Sign_pending) &  (next(Give_medicine_happened) = Give_medicine_happened) &  (next(Give_medicine_included) = Give_medicine_included) &  (next(Give_medicine_pending) = Give_medicine_pending) &  (next(Dont_trust_happened) = Dont_trust_happened) &  (next(Dont_trust_included) = Dont_trust_included) &  (next(Dont_trust_pending) = Dont_trust_pending) ) ;
+    CTLSPEC   -- deadlock-freedom
+    AG (
+    (
+    (Prescribe_medicine_included & Prescribe_medicine_pending) |
+    (Sign_included & Sign_pending) |
+    (Give_medicine_included & Give_medicine_pending) |
+    (Dont_trust_included & Dont_trust_pending) 
+    )
+    ->
+    (
+    Prescribe_medicine_enabled |
+    Sign_enabled |
+    Give_medicine_enabled |
+    Dont_trust_enabled 
+    )
+    )
+    CTLSPEC   -- absence of dead activities
+    (EF Prescribe_medicine_enabled) & (EF Sign_enabled) & (EF Give_medicine_enabled) & (EF Dont_trust_enabled) 
+    CTLSPEC   -- livelock-freedom
+    AG (
+    ( (Prescribe_medicine_included & Prescribe_medicine_pending) -> (EF Prescribe_medicine_accepted) ) &
+    ( (Sign_included & Sign_pending) -> (EF Sign_accepted) ) &
+    ( (Give_medicine_included & Give_medicine_pending) -> (EF Give_medicine_accepted) ) &
+    ( (Dont_trust_included & Dont_trust_pending) -> (EF Dont_trust_accepted) ) 
+   )
+    CTLSPEC   -- consistency
+    EX (
+    ( EF (
+    (!Prescribe_medicine_included | !Prescribe_medicine_pending) &
+    (!Sign_included | !Sign_pending) &
+    (!Give_medicine_included | !Give_medicine_pending) &
+    (!Dont_trust_included | !Dont_trust_pending) ) )
+    |
+    ( EF EG (
+    ( EF Prescribe_medicine_accepted ) &
+    ( EF Sign_accepted ) &
+    ( EF Give_medicine_accepted ) &
+    ( EF Dont_trust_accepted ) ) )
+    )
+    

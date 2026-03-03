@@ -1,0 +1,138 @@
+MODULE main
+    VAR
+    A_happened : boolean;
+  A_included : boolean;
+  A_pending : boolean;
+  B_happened : boolean;
+  B_included : boolean;
+  B_pending : boolean;
+  C_happened : boolean;
+  C_included : boolean;
+  C_pending : boolean;
+  D_happened : boolean;
+  D_included : boolean;
+  D_pending : boolean;
+  E_happened : boolean;
+  E_included : boolean;
+  E_pending : boolean;
+  F_happened : boolean;
+  F_included : boolean;
+  F_pending : boolean;
+  G_happened : boolean;
+  G_included : boolean;
+  G_pending : boolean;
+  
+    INIT
+    (
+  ( A_happened = FALSE ) &
+  ( A_included = TRUE ) &
+  ( A_pending = FALSE ) &
+  ( B_happened = FALSE ) &
+  ( B_included = TRUE ) &
+  ( B_pending = FALSE ) &
+  ( C_happened = FALSE ) &
+  ( C_included = TRUE ) &
+  ( C_pending = FALSE ) &
+  ( D_happened = FALSE ) &
+  ( D_included = TRUE ) &
+  ( D_pending = FALSE ) &
+  ( E_happened = FALSE ) &
+  ( E_included = TRUE ) &
+  ( E_pending = FALSE ) &
+  ( F_happened = FALSE ) &
+  ( F_included = TRUE ) &
+  ( F_pending = FALSE ) &
+  ( G_happened = FALSE ) &
+  ( G_included = TRUE ) &
+  ( G_pending = FALSE ) 
+    )
+    TRANS
+    ( 
+  ( (A_enabled) & (A_effect) ) |
+  ( (B_enabled) & (B_effect) ) |
+  ( (C_enabled) & (C_effect) ) |
+  ( (D_enabled) & (D_effect) ) |
+  ( (E_enabled) & (E_effect) ) |
+  ( (F_enabled) & (F_effect) ) |
+  ( (G_enabled) & (G_effect) ) |
+  ( no_enabled & no_effect )
+    )
+    DEFINE
+    A_enabled := A_included ;
+  B_enabled := B_included ;
+  C_enabled := C_included & (E_happened | !E_included) ;
+  D_enabled := D_included & (C_happened | !C_included) & (E_happened | !E_included) ;
+  E_enabled := E_included & (!D_pending | !D_included) ;
+  F_enabled := F_included & (E_happened | !E_included) ;
+  G_enabled := G_included & (E_happened | !E_included) ;
+  no_enabled := !A_enabled & !B_enabled & !C_enabled & !D_enabled & !E_enabled & !F_enabled & !G_enabled ;
+    A_accepted := ( !A_included | !A_pending | A_enabled ); 
+  B_accepted := ( !B_included | !B_pending | B_enabled ); 
+  C_accepted := ( !C_included | !C_pending | C_enabled ); 
+  D_accepted := ( !D_included | !D_pending | D_enabled ); 
+  E_accepted := ( !E_included | !E_pending | E_enabled ); 
+  F_accepted := ( !F_included | !F_pending | F_enabled ); 
+  G_accepted := ( !G_included | !G_pending | G_enabled ); 
+  A_effect := ( (next(A_happened) = TRUE) & (next(A_included) = FALSE) & (next(A_pending) = FALSE) & (next(B_happened) = B_happened) & (next(B_included) = FALSE) & (next(B_pending) = B_pending) & (next(C_happened) = C_happened) & (next(C_included) = FALSE) & (next(C_pending) = C_pending) & (next(D_happened) = D_happened) & (next(D_included) = D_included) & (next(D_pending) = D_pending) & (next(E_happened) = E_happened) & (next(E_included) = E_included) & (next(E_pending) = E_pending) & (next(F_happened) = F_happened) & (next(F_included) = F_included) & (next(F_pending) = F_pending) & (next(G_happened) = G_happened) & (next(G_included) = G_included) & (next(G_pending) = G_pending) ) ;
+  B_effect := ( (next(A_happened) = A_happened) & (next(A_included) = A_included) & (next(A_pending) = A_pending) & (next(B_happened) = TRUE) & (next(B_included) = B_included) & (next(B_pending) = FALSE) & (next(C_happened) = C_happened) & (next(C_included) = C_included) & (next(C_pending) = C_pending) & (next(D_happened) = D_happened) & (next(D_included) = D_included) & (next(D_pending) = TRUE) & (next(E_happened) = E_happened) & (next(E_included) = E_included) & (next(E_pending) = E_pending) & (next(F_happened) = F_happened) & (next(F_included) = F_included) & (next(F_pending) = F_pending) & (next(G_happened) = G_happened) & (next(G_included) = G_included) & (next(G_pending) = G_pending) ) ;
+  C_effect := ( (next(A_happened) = A_happened) & (next(A_included) = A_included) & (next(A_pending) = A_pending) & (next(B_happened) = B_happened) & (next(B_included) = B_included) & (next(B_pending) = B_pending) & (next(C_happened) = TRUE) & (next(C_included) = C_included) & (next(C_pending) = FALSE) & (next(D_happened) = D_happened) & (next(D_included) = D_included) & (next(D_pending) = D_pending) & (next(E_happened) = E_happened) & (next(E_included) = E_included) & (next(E_pending) = E_pending) & (next(F_happened) = F_happened) & (next(F_included) = F_included) & (next(F_pending) = F_pending) & (next(G_happened) = G_happened) & (next(G_included) = G_included) & (next(G_pending) = G_pending) ) ;
+  D_effect := ( (next(A_happened) = A_happened) & (next(A_included) = A_included) & (next(A_pending) = A_pending) & (next(B_happened) = B_happened) & (next(B_included) = B_included) & (next(B_pending) = B_pending) & (next(C_happened) = C_happened) & (next(C_included) = C_included) & (next(C_pending) = C_pending) & (next(D_happened) = TRUE) & (next(D_included) = D_included) & (next(D_pending) = FALSE) & (next(E_happened) = E_happened) & (next(E_included) = E_included) & (next(E_pending) = E_pending) & (next(F_happened) = F_happened) & (next(F_included) = F_included) & (next(F_pending) = F_pending) & (next(G_happened) = G_happened) & (next(G_included) = G_included) & (next(G_pending) = G_pending) ) ;
+  E_effect := ( (next(A_happened) = A_happened) & (next(A_included) = A_included) & (next(A_pending) = A_pending) & (next(B_happened) = B_happened) & (next(B_included) = B_included) & (next(B_pending) = B_pending) & (next(C_happened) = C_happened) & (next(C_included) = C_included) & (next(C_pending) = C_pending) & (next(D_happened) = D_happened) & (next(D_included) = D_included) & (next(D_pending) = D_pending) & (next(E_happened) = TRUE) & (next(E_included) = E_included) & (next(E_pending) = FALSE) & (next(F_happened) = F_happened) & (next(F_included) = F_included) & (next(F_pending) = TRUE) & (next(G_happened) = G_happened) & (next(G_included) = G_included) & (next(G_pending) = TRUE) ) ;
+  F_effect := ( (next(A_happened) = A_happened) & (next(A_included) = A_included) & (next(A_pending) = A_pending) & (next(B_happened) = B_happened) & (next(B_included) = TRUE) & (next(B_pending) = TRUE) & (next(C_happened) = C_happened) & (next(C_included) = C_included) & (next(C_pending) = C_pending) & (next(D_happened) = D_happened) & (next(D_included) = D_included) & (next(D_pending) = D_pending) & (next(E_happened) = E_happened) & (next(E_included) = E_included) & (next(E_pending) = E_pending) & (next(F_happened) = TRUE) & (next(F_included) = F_included) & (next(F_pending) = FALSE) & (next(G_happened) = G_happened) & (next(G_included) = FALSE) & (next(G_pending) = G_pending) ) ;
+  G_effect := ( (next(A_happened) = A_happened) & (next(A_included) = A_included) & (next(A_pending) = A_pending) & (next(B_happened) = B_happened) & (next(B_included) = B_included) & (next(B_pending) = B_pending) & (next(C_happened) = C_happened) & (next(C_included) = TRUE) & (next(C_pending) = TRUE) & (next(D_happened) = D_happened) & (next(D_included) = D_included) & (next(D_pending) = D_pending) & (next(E_happened) = E_happened) & (next(E_included) = E_included) & (next(E_pending) = E_pending) & (next(F_happened) = F_happened) & (next(F_included) = FALSE) & (next(F_pending) = F_pending) & (next(G_happened) = TRUE) & (next(G_included) = G_included) & (next(G_pending) = FALSE) ) ;
+  no_effect := (  (next(A_happened) = A_happened) &  (next(A_included) = A_included) &  (next(A_pending) = A_pending) &  (next(B_happened) = B_happened) &  (next(B_included) = B_included) &  (next(B_pending) = B_pending) &  (next(C_happened) = C_happened) &  (next(C_included) = C_included) &  (next(C_pending) = C_pending) &  (next(D_happened) = D_happened) &  (next(D_included) = D_included) &  (next(D_pending) = D_pending) &  (next(E_happened) = E_happened) &  (next(E_included) = E_included) &  (next(E_pending) = E_pending) &  (next(F_happened) = F_happened) &  (next(F_included) = F_included) &  (next(F_pending) = F_pending) &  (next(G_happened) = G_happened) &  (next(G_included) = G_included) &  (next(G_pending) = G_pending) ) ;
+    CTLSPEC   -- deadlock-freedom
+    AG (
+    (
+    (A_included & A_pending) |
+    (B_included & B_pending) |
+    (C_included & C_pending) |
+    (D_included & D_pending) |
+    (E_included & E_pending) |
+    (F_included & F_pending) |
+    (G_included & G_pending) 
+    )
+    ->
+    (
+    A_enabled |
+    B_enabled |
+    C_enabled |
+    D_enabled |
+    E_enabled |
+    F_enabled |
+    G_enabled 
+    )
+    )
+    CTLSPEC   -- absence of dead activities
+    (EF A_enabled) & (EF B_enabled) & (EF C_enabled) & (EF D_enabled) & (EF E_enabled) & (EF F_enabled) & (EF G_enabled) 
+    CTLSPEC   -- livelock-freedom
+    AG (
+    ( (A_included & A_pending) -> (EF A_accepted) ) &
+    ( (B_included & B_pending) -> (EF B_accepted) ) &
+    ( (C_included & C_pending) -> (EF C_accepted) ) &
+    ( (D_included & D_pending) -> (EF D_accepted) ) &
+    ( (E_included & E_pending) -> (EF E_accepted) ) &
+    ( (F_included & F_pending) -> (EF F_accepted) ) &
+    ( (G_included & G_pending) -> (EF G_accepted) ) 
+   )
+    CTLSPEC   -- consistency
+    EX (
+    ( EF (
+    (!A_included | !A_pending) &
+    (!B_included | !B_pending) &
+    (!C_included | !C_pending) &
+    (!D_included | !D_pending) &
+    (!E_included | !E_pending) &
+    (!F_included | !F_pending) &
+    (!G_included | !G_pending) ) )
+    |
+    ( EF EG (
+    ( EF A_accepted ) &
+    ( EF B_accepted ) &
+    ( EF C_accepted ) &
+    ( EF D_accepted ) &
+    ( EF E_accepted ) &
+    ( EF F_accepted ) &
+    ( EF G_accepted ) ) )
+    )
+    

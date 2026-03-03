@@ -1,0 +1,596 @@
+Script started on 2026-02-25 21:52:33+01:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="92" LINES="65"]
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exitnuXmv -int Contract_Change_Management_Process_16Events_95Terms.smv [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K GDPR21§1_4Events_5Terms.smv 
+[?2004l]133;C\]666;vte.shell.preexec!\*** This is nuXmv 2.1.0 (compiled on Fri Nov 29 13:41:31 2024)
+*** Copyright (c) 2014-2024, Fondazione Bruno Kessler
+*** For more information on nuXmv see https://nuxmv.fbk.eu
+*** or email to <nuxmv@fbk.eu>.
+*** Please report bugs at Please report bugs to <nusmv-users@fbk.eu>
+*** (click on "Login Anonymously" to access)
+*** Alternatively write to <nuxmv@fbk.eu>.
+
+*** This version of nuXmv is linked to NuSMV 2.7.0.
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@fbk.eu>.
+*** Copyright (C) 2010-2024, Fondazione Bruno Kessler
+
+*** This version of nuXmv is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of nuXmv is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+*** This version of nuXmv is linked to MathSAT
+*** Copyright (C) 2009-2019 by Fondazione Bruno Kessler
+*** Copyright (C) 2009-2019 by University of Trento and others
+*** See http://mathsat.fbk.eu
+
+nuXmv > rea[12Gd_m[15Godel 
+nuXmv > flA[11G[Ka[12Gtten_hierarchy 
+nuXmv > enc[12Gode_variables 
+nuXmv > bui[12Gld_m[16Godel 
+nuXmv > h[10G[9G[Kch[11Geck_ct[17Glspec 
+-- specification AG (((((D1_included & D1_pending) | (D2_included & D2_pending)) | (D3_included & D3_pending)) | (D4_included & D4_pending)) -> (((D1_enabled | D2_enabled) | D3_enabled) | D4_enabled))  is true
+-- specification (((EF D1_enabled & EF D2_enabled) & EF D3_enabled) & EF D4_enabled)  is true
+-- specification AG (((((D1_included & D1_pending) -> EF D1_accepted) & ((D2_included & D2_pending) -> EF D2_accepted)) & ((D3_included & D3_pending) -> EF D3_accepted)) & ((D4_included & D4_pending) -> EF D4_accepted))  is true
+-- specification EX (EF ((((!D1_included | !D1_pending) & (!D2_included | !D2_pending)) & (!D3_included | !D3_pending)) & (!D4_included | !D4_pending)) | EF (EG (((EF D1_accepted & EF D2_accepted) & EF D3_accepted) & EF D4_accepted)))  is true
+nuXmv > pri[12Gnt_re[17Gachable_states 
+######################################################################
+system diameter: 5
+reachable states: 20 (2^4.32193) out of 4096 (2^12)
+######################################################################
+nuXmv > [9Gprint_reachable_states -v -d
+######################################################################
+system diameter: 5
+reachable states: 20 (2^4.32193) out of 4096 (2^12)
+  ------- State    1 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = FALSE
+  D1_happened = TRUE
+  D1_included = FALSE
+  D1_pending = FALSE
+  D2_happened = FALSE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = TRUE
+  D4_pending = FALSE
+  ------- State    2 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = FALSE
+  D1_happened = FALSE
+  D1_included = FALSE
+  D1_pending = FALSE
+  D2_happened = FALSE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = TRUE
+  D4_pending = FALSE
+  ------- State    3 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = FALSE
+  D1_happened = TRUE
+  D1_included = FALSE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = TRUE
+  D4_pending = TRUE
+  ------- State    4 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = FALSE
+  D1_happened = FALSE
+  D1_included = FALSE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = TRUE
+  D4_pending = TRUE
+  ------- State    5 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = FALSE
+  D1_happened = TRUE
+  D1_included = FALSE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = TRUE
+  D4_pending = FALSE
+  ------- State    6 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = FALSE
+  D1_happened = FALSE
+  D1_included = FALSE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = TRUE
+  D4_pending = FALSE
+  ------- State    7 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = TRUE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = FALSE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = FALSE
+  D4_pending = FALSE
+  ------- State    8 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = FALSE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = FALSE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = FALSE
+  D4_pending = FALSE
+  ------- State    9 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = TRUE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = FALSE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = FALSE
+  D4_included = FALSE
+  D4_pending = FALSE
+  ------- State   10 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = FALSE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = FALSE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = FALSE
+  D4_included = FALSE
+  D4_pending = FALSE
+  ------- State   11 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = TRUE
+  D1_happened = TRUE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = FALSE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = FALSE
+  D4_included = TRUE
+  D4_pending = FALSE
+  ------- State   12 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = TRUE
+  D1_happened = FALSE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = FALSE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = FALSE
+  D4_included = TRUE
+  D4_pending = FALSE
+  ------- State   13 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = TRUE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = FALSE
+  D4_included = FALSE
+  D4_pending = TRUE
+  ------- State   14 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = FALSE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = FALSE
+  D4_included = FALSE
+  D4_pending = TRUE
+  ------- State   15 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = TRUE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = FALSE
+  D4_pending = TRUE
+  ------- State   16 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = FALSE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = FALSE
+  D4_pending = TRUE
+  ------- State   17 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = TRUE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = FALSE
+  D4_pending = FALSE
+  ------- State   18 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = FALSE
+  D3_enabled = TRUE
+  D2_enabled = FALSE
+  D1_enabled = TRUE
+  D1_happened = FALSE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = FALSE
+  D2_pending = FALSE
+  D3_happened = TRUE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = TRUE
+  D4_included = FALSE
+  D4_pending = FALSE
+  ------- State   19 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = TRUE
+  D1_happened = TRUE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = FALSE
+  D4_included = TRUE
+  D4_pending = TRUE
+  ------- State   20 ------
+  no_effect = FALSE
+  D4_effect = FALSE
+  D3_effect = FALSE
+  D2_effect = FALSE
+  D1_effect = FALSE
+  D4_accepted = TRUE
+  D3_accepted = TRUE
+  D2_accepted = TRUE
+  D1_accepted = TRUE
+  no_enabled = FALSE
+  D4_enabled = TRUE
+  D3_enabled = TRUE
+  D2_enabled = TRUE
+  D1_enabled = TRUE
+  D1_happened = FALSE
+  D1_included = TRUE
+  D1_pending = FALSE
+  D2_happened = TRUE
+  D2_included = TRUE
+  D2_pending = FALSE
+  D3_happened = FALSE
+  D3_included = TRUE
+  D3_pending = FALSE
+  D4_happened = FALSE
+  D4_included = TRUE
+  D4_pending = TRUE
+  -------------------------
+######################################################################
+nuXmv > exit
+unknown command 'exit'
+nuXmv > q[9G[Kquit
+]0;jonlinox@fedora-t480s:~/Thesis/nuxmv/SMV]666;vte.shell.postexec=0\]666;vte.shell.precmd!\]7;file://fedora-t480s/home/jonlinox/Thesis/nuxmv/SMV\[?2004h(base) ]133;D;0\]133;A\[0m[1m[32mjonlinox@fedora-t480s[0m:[1m[32m~/Thesis/nuxmv/SMV[0m$ ]133;B\exit
+[?2004l]133;C\]666;vte.shell.preexec!\exit
+
+Script done on 2026-02-25 21:53:45+01:00 [COMMAND_EXIT_CODE="0"]

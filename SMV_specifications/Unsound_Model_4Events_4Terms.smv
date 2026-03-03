@@ -1,0 +1,93 @@
+MODULE main
+    VAR
+    A_happened : boolean;
+  A_included : boolean;
+  A_pending : boolean;
+  B_happened : boolean;
+  B_included : boolean;
+  B_pending : boolean;
+  D_happened : boolean;
+  D_included : boolean;
+  D_pending : boolean;
+  C_happened : boolean;
+  C_included : boolean;
+  C_pending : boolean;
+  
+    INIT
+    (
+  ( A_happened = FALSE ) &
+  ( A_included = TRUE ) &
+  ( A_pending = TRUE ) &
+  ( B_happened = FALSE ) &
+  ( B_included = TRUE ) &
+  ( B_pending = FALSE ) &
+  ( D_happened = FALSE ) &
+  ( D_included = TRUE ) &
+  ( D_pending = FALSE ) &
+  ( C_happened = FALSE ) &
+  ( C_included = TRUE ) &
+  ( C_pending = TRUE ) 
+    )
+    TRANS
+    ( 
+  ( (A_enabled) & (A_effect) ) |
+  ( (B_enabled) & (B_effect) ) |
+  ( (D_enabled) & (D_effect) ) |
+  ( (C_enabled) & (C_effect) ) |
+  ( no_enabled & no_effect )
+    )
+    DEFINE
+    A_enabled := A_included & (D_happened | !D_included) ;
+  B_enabled := B_included & (A_happened | !A_included) ;
+  D_enabled := D_included & (C_happened | !C_included) ;
+  C_enabled := C_included & (B_happened | !B_included) ;
+  no_enabled := !A_enabled & !B_enabled & !D_enabled & !C_enabled ;
+    A_accepted := ( !A_included | !A_pending | A_enabled ); 
+  B_accepted := ( !B_included | !B_pending | B_enabled ); 
+  D_accepted := ( !D_included | !D_pending | D_enabled ); 
+  C_accepted := ( !C_included | !C_pending | C_enabled ); 
+  A_effect := ( (next(A_happened) = TRUE) & (next(A_included) = A_included) & (next(A_pending) = FALSE) & (next(B_happened) = B_happened) & (next(B_included) = B_included) & (next(B_pending) = B_pending) & (next(D_happened) = D_happened) & (next(D_included) = D_included) & (next(D_pending) = D_pending) & (next(C_happened) = C_happened) & (next(C_included) = C_included) & (next(C_pending) = C_pending) ) ;
+  B_effect := ( (next(A_happened) = A_happened) & (next(A_included) = A_included) & (next(A_pending) = A_pending) & (next(B_happened) = TRUE) & (next(B_included) = B_included) & (next(B_pending) = FALSE) & (next(D_happened) = D_happened) & (next(D_included) = D_included) & (next(D_pending) = D_pending) & (next(C_happened) = C_happened) & (next(C_included) = C_included) & (next(C_pending) = C_pending) ) ;
+  D_effect := ( (next(A_happened) = A_happened) & (next(A_included) = A_included) & (next(A_pending) = A_pending) & (next(B_happened) = B_happened) & (next(B_included) = B_included) & (next(B_pending) = B_pending) & (next(D_happened) = TRUE) & (next(D_included) = D_included) & (next(D_pending) = FALSE) & (next(C_happened) = C_happened) & (next(C_included) = C_included) & (next(C_pending) = C_pending) ) ;
+  C_effect := ( (next(A_happened) = A_happened) & (next(A_included) = A_included) & (next(A_pending) = A_pending) & (next(B_happened) = B_happened) & (next(B_included) = B_included) & (next(B_pending) = B_pending) & (next(D_happened) = D_happened) & (next(D_included) = D_included) & (next(D_pending) = D_pending) & (next(C_happened) = TRUE) & (next(C_included) = C_included) & (next(C_pending) = FALSE) ) ;
+  no_effect := (  (next(A_happened) = A_happened) &  (next(A_included) = A_included) &  (next(A_pending) = A_pending) &  (next(B_happened) = B_happened) &  (next(B_included) = B_included) &  (next(B_pending) = B_pending) &  (next(D_happened) = D_happened) &  (next(D_included) = D_included) &  (next(D_pending) = D_pending) &  (next(C_happened) = C_happened) &  (next(C_included) = C_included) &  (next(C_pending) = C_pending) ) ;
+    CTLSPEC   -- deadlock-freedom
+    AG (
+    (
+    (A_included & A_pending) |
+    (B_included & B_pending) |
+    (D_included & D_pending) |
+    (C_included & C_pending) 
+    )
+    ->
+    (
+    A_enabled |
+    B_enabled |
+    D_enabled |
+    C_enabled 
+    )
+    )
+    CTLSPEC   -- absence of dead activities
+    (EF A_enabled) & (EF B_enabled) & (EF D_enabled) & (EF C_enabled) 
+    CTLSPEC   -- livelock-freedom
+    AG (
+    ( (A_included & A_pending) -> (EF A_accepted) ) &
+    ( (B_included & B_pending) -> (EF B_accepted) ) &
+    ( (D_included & D_pending) -> (EF D_accepted) ) &
+    ( (C_included & C_pending) -> (EF C_accepted) ) 
+   )
+    CTLSPEC   -- consistency
+    EX (
+    ( EF (
+    (!A_included | !A_pending) &
+    (!B_included | !B_pending) &
+    (!D_included | !D_pending) &
+    (!C_included | !C_pending) ) )
+    |
+    ( EF EG (
+    ( EF A_accepted ) &
+    ( EF B_accepted ) &
+    ( EF D_accepted ) &
+    ( EF C_accepted ) ) )
+    )
+    

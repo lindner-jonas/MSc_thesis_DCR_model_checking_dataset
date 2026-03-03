@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dcr:definitions xmlns:dcr="http://tk/schema/dcr" xmlns:dcrDi="http://tk/schema/dcrDi" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC">
+  <dcr:dcrGraph id="dcrGraph">
+    <dcr:event id="Event_1bvmrm9" role="HHRR" description="Consult Employee&#39;s salary agreement" included="true" executed="false" pending="false" />
+    <dcr:event id="Event_084mgdk" role="Employee" description="Report Additional Income Sources" included="true" executed="false" pending="false" />
+    <dcr:event id="Event_0zaxxoa" role="Economy Department" description="Perform tax calculation for employee" included="true" executed="false" pending="false" />
+    <dcr:event id="Event_0ea55hv" role="Accounting" description="Pay salary" included="true" executed="false" pending="false" />
+    <dcr:relation id="Relation_0cn7s17" type="condition" sourceRef="Event_1bvmrm9" targetRef="Event_0zaxxoa" />
+    <dcr:relation id="Relation_04y1thg" type="condition" sourceRef="Event_1bvmrm9" targetRef="Event_0ea55hv" />
+    <dcr:relation id="Relation_1y7uzkr" type="response" sourceRef="Event_084mgdk" targetRef="Event_0zaxxoa" />
+    <dcr:relation id="Relation_0e60zds" type="response" sourceRef="Event_1bvmrm9" targetRef="Event_0ea55hv" />
+    <dcr:relation id="Relation_0h9u9vx" type="response" sourceRef="Event_1bvmrm9" targetRef="Event_0zaxxoa" />
+    <dcr:relation id="Relation_0knz8rr" type="milestone" sourceRef="Event_0zaxxoa" targetRef="Event_0ea55hv" />
+  </dcr:dcrGraph>
+  <dcrDi:dcrRootBoard id="dcrRootBoard">
+    <dcrDi:dcrPlane id="dcrPlane" boardElement="dcrGraph">
+      <dcrDi:relation id="Relation_0knz8rr_di" boardElement="Relation_0knz8rr">
+        <dcrDi:waypoint x="615" y="500" />
+        <dcrDi:waypoint x="615" y="330" />
+      </dcrDi:relation>
+      <dcrDi:relation id="Relation_0h9u9vx_di" boardElement="Relation_0h9u9vx">
+        <dcrDi:waypoint x="280" y="330" />
+        <dcrDi:waypoint x="280" y="400" />
+        <dcrDi:waypoint x="360" y="400" />
+        <dcrDi:waypoint x="360" y="540" />
+        <dcrDi:waypoint x="550" y="540" />
+      </dcrDi:relation>
+      <dcrDi:relation id="Relation_0e60zds_di" boardElement="Relation_0e60zds">
+        <dcrDi:waypoint x="310" y="280" />
+        <dcrDi:waypoint x="550" y="280" />
+      </dcrDi:relation>
+      <dcrDi:relation id="Relation_1y7uzkr_di" boardElement="Relation_1y7uzkr">
+        <dcrDi:waypoint x="310" y="620" />
+        <dcrDi:waypoint x="550" y="620" />
+      </dcrDi:relation>
+      <dcrDi:relation id="Relation_04y1thg_di" boardElement="Relation_04y1thg">
+        <dcrDi:waypoint x="310" y="255" />
+        <dcrDi:waypoint x="550" y="255" />
+      </dcrDi:relation>
+      <dcrDi:relation id="Relation_0cn7s17_di" boardElement="Relation_0cn7s17">
+        <dcrDi:waypoint x="245" y="330" />
+        <dcrDi:waypoint x="245" y="410" />
+        <dcrDi:waypoint x="350" y="410" />
+        <dcrDi:waypoint x="350" y="560" />
+        <dcrDi:waypoint x="550" y="560" />
+      </dcrDi:relation>
+      <dcrDi:dcrShape id="Event_1bvmrm9_di" boardElement="Event_1bvmrm9">
+        <dc:Bounds x="180" y="180" width="130" height="150" />
+      </dcrDi:dcrShape>
+      <dcrDi:dcrShape id="Event_084mgdk_di" boardElement="Event_084mgdk">
+        <dc:Bounds x="180" y="500" width="130" height="150" />
+      </dcrDi:dcrShape>
+      <dcrDi:dcrShape id="Event_0zaxxoa_di" boardElement="Event_0zaxxoa">
+        <dc:Bounds x="550" y="500" width="130" height="150" />
+      </dcrDi:dcrShape>
+      <dcrDi:dcrShape id="Event_0ea55hv_di" boardElement="Event_0ea55hv">
+        <dc:Bounds x="550" y="180" width="130" height="150" />
+      </dcrDi:dcrShape>
+    </dcrDi:dcrPlane>
+  </dcrDi:dcrRootBoard>
+</dcr:definitions>
